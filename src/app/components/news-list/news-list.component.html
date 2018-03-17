@@ -1,0 +1,10 @@
+<div *ngIf="isLoaded">
+  <div *ngIf="isLogged" >
+    <a routerLink="/add_news">Додај нову вест</a>
+    <hr>
+  </div>
+  <div *ngFor="let news of allNews">
+    <app-news-preview [news]="news"></app-news-preview>
+    <hr>
+  </div>
+</div>

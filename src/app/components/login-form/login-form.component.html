@@ -1,0 +1,17 @@
+<div class="layout">
+  <h3>Улогуј се</h3>
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Имејл:</label>
+      <input type="text" class="form-control" name="email" id="email" [(ngModel)]="user.email">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Шифра:</label>
+        <input type="password" class="form-control" name="password" id="password" [(ngModel)]="user.password">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Улогуј се</button>
+  </form>
+  <p class="error">{{ error }}</p>
+</div>

@@ -1,0 +1,17 @@
+<div class="layout">
+  <h3>Нова вест:</h3>
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="header">Наслов:</label>
+      <input type="text" class="form-control" name="header" id="header" [(ngModel)]="news.header">
+    </div>
+
+    <div class="form-group">
+        <label for="content">Садржај:</label>
+        <textarea class="form-control" name="content" id="content" [(ngModel)]="news.content"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  <p class="error">{{ error }}</p>
+</div>
