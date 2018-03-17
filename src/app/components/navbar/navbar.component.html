@@ -1,11 +1,10 @@
 <nav class="navbar">
   <ul class="nav nav-tabs nav-justified">
-    <li><a href="/news">Вести</a></li>
+    <li><a routerLink="/news">Вести</a></li>
     <li><a href="#">Слике</a></li>
     <li><a href="#">Видео</a></li>
     <li><a href="#">Временска прогноза</a></li>
     <li><a href="#">Хороскоп</a></li>
     <li><a href="#">Контакт</a></li>
-    <li *ngIf="!isLogged"><a href="#" routerLink="/login" routerLinkActive="active">Улогуј се</a></li>
   </ul>
 </nav>
