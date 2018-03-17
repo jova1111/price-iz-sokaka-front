@@ -1,1 +1,1 @@
-web: tsc && lite-server 
+web: node server.js
