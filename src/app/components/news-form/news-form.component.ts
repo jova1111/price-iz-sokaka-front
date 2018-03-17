@@ -11,14 +11,15 @@ import { Router } from '@angular/router';
 })
 export class NewsFormComponent implements OnInit {
 
-  private news = new News("");
+  public news = new News("");
+  public error: string;
 
   constructor(private newsService: NewsService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  private onSubmit() {
+  public onSubmit() {
     this.newsService.save(this.news)
       .then(succes => {
         this.router.navigate(['/']);

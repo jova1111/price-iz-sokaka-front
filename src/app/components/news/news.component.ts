@@ -11,9 +11,9 @@ import { News } from '../../model/News';
 })
 export class NewsComponent implements OnInit {
 
-  private isLoaded: boolean;
+  public isLoaded: boolean;
   private id: number;
-  private news: News;
+  public news: News;
 
   constructor(private newsService: NewsService, private route: ActivatedRoute) { }
 

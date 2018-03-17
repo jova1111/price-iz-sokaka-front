@@ -9,7 +9,7 @@ import { News } from '../../model/News';
 export class NewsPreviewComponent implements OnInit {
 
   @Input()
-  private news: News;
+  public news: News;
 
   constructor() { }
 

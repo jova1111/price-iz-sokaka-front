@@ -11,9 +11,9 @@ import { News } from '../../model/News';
 })
 export class NewsListComponent implements OnInit {
 
-  private isLogged: boolean;
-  private isLoaded: boolean;
-  private allNews: News[] = [];
+  public isLogged: boolean;
+  public isLoaded: boolean;
+  public allNews: News[] = [];
 
   constructor(private authService: AuthService, private newsService: NewsService) { }
 

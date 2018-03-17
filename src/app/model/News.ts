@@ -1,8 +1,8 @@
 export class News {
-    private id: number;
-    private header: string;
-    private content: string;
-    private dateCreated: Date;
+    public id: number;
+    public header: string;
+    public content: string;
+    public dateCreated: Date;
 
     constructor (json) {
         if (!json) {
