@@ -18,7 +18,6 @@ export class NewsListComponent implements OnInit {
   constructor(private authService: AuthService, private newsService: NewsService) { }
 
   ngOnInit() {
-    this.authService.register();
     this.isLogged = this.authService.isAuthenticated();
     this.newsService.getAllNews()
       .then(responseNews => {
