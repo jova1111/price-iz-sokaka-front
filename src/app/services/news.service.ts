@@ -36,9 +36,6 @@ export class NewsService {
   public save(news: News) {
     return new Promise((resolve, reject) => {
       let tokenStr = localStorage.getItem("token");
-      if(!tokenStr) {
-        reject('Нисте улоговани.');
-      }
       let token = JSON.parse(tokenStr).value;
       let headers = new HttpHeaders({"Authorization": "Bearer " + token});
       this.http.post('https://frozen-coast-28508.herokuapp.com/api/news', news, {headers: headers}).subscribe(
@@ -50,6 +47,23 @@ export class NewsService {
           reject(error.message);
         }
       )
-    })
+    });
   }
+
+  public delete(id) {
+    return new Promise((resolve, reject) => {
+      let tokenStr = localStorage.getItem("token");
+      let token = JSON.parse(tokenStr).value;
+      let headers = new HttpHeaders({"Authorization": "Bearer " + token});
+      this.http.delete('https://frozen-coast-28508.herokuapp.com/api/news/' + id).subscribe(
+        success => {
+          resolve('Успешно избрисано.');
+        },
+        error => {
+          reject('Грешка приликом брисања.');
+        }
+      );
+    });
+  }
+
  }

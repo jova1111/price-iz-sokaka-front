@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { News } from '../../model/News';
 
 @Component({
@@ -15,7 +15,7 @@ export class NewsComponent implements OnInit {
   private id: number;
   public news: News;
 
-  constructor(private newsService: NewsService, private route: ActivatedRoute) { }
+  constructor(private newsService: NewsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -30,6 +30,18 @@ export class NewsComponent implements OnInit {
         console.log(error);
       })
 
+  }
+
+  public delete() {
+    this.newsService.delete(this.id)
+      .then(success => {
+        alert(success);
+        this.router.navigate(['/']);
+        window.location.reload(true);
+      })
+      .catch(error => {
+        alert(error);
+      })
   }
 
 }
