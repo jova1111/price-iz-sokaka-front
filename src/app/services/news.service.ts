@@ -34,15 +34,19 @@ export class NewsService {
   }
 
   public save(news: News) {
-    let tokenStr = localStorage.getItem("token");
-    let token = JSON.parse(tokenStr).value;
-    let headers = new HttpHeaders({"Authorization": "Bearer " + token});
     return new Promise((resolve, reject) => {
+      let tokenStr = localStorage.getItem("token");
+      if(!tokenStr) {
+        reject('Нисте улоговани.');
+      }
+      let token = JSON.parse(tokenStr).value;
+      let headers = new HttpHeaders({"Authorization": "Bearer " + token});
       this.http.post('https://frozen-coast-28508.herokuapp.com/api/news', news, {headers: headers}).subscribe(
         success => {
           resolve(success);
         },
         error => {
+          console.log(error);
           reject(error.message);
         }
       )

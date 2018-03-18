@@ -23,7 +23,7 @@ export class LoginFormComponent implements OnInit {
     this.authService.login(this.user)
       .then(() => {
         this.router.navigate(['/']);
-        window.location.reload(true)
+        //window.location.reload(true)
       })
       .catch(
         error => {

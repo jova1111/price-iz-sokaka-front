@@ -11,21 +11,19 @@ export class AuthService {
 
   public login(user: User) {
     var data = {
-      client_id: '4',
-      client_secret: 'g6S6CO3BhrgimfurXO5gjPgTk7ESJfGAFagy1NZv',
-      grant_type: 'password',
-      username: user.email,
+      /*client_id: '2',
+      client_secret: 'dRKS8omkeSCVp4VdaCZnd2DItMHxdlur96NGOine',
+      grant_type: 'password',*/
+      email: user.email,
       password: user.password
     };
     return new Promise((resolve, reject)=> {
-      this.http.post('https://frozen-coast-28508.herokuapp.com/oauth/token', data).subscribe(
+      this.http.post('https://frozen-coast-28508.herokuapp.com/api/authenticate', data).subscribe(
         (response: any) => {
-          console.log(response);
-          this.authenticate(response.access_token, response.expires_in);
+          this.authenticate(response.token, response.expires_in);
           resolve("Successfully logged in!");
         },
         (error: HttpErrorResponse) => {
-          console.log(error.message);
           reject('Нисте унели исправне податке!');
         });
     });
@@ -50,7 +48,7 @@ export class AuthService {
   }
 
   public register() {
-    let user = { email: 'joca95@gmail.com', name: "joca", password: "joca1995"}
+    let user = { email: 'rada@gmail.com', name: "biliciku", password: "biliciku95"}
     const headers: HttpHeaders = new HttpHeaders({'X-Requested-With': 'XMLHttpRequest'})
                                      .append('Content-Type', 'application/json');
     return this.http.post('https://frozen-coast-28508.herokuapp.com/api/user', user, { headers: headers } ).subscribe(
