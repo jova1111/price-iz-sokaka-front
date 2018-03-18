@@ -44,6 +44,8 @@ export class NewsService {
         },
         error => {
           console.log(error);
+          alert(error);
+          alert(error.message);
           reject(error.message);
         }
       )
