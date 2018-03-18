@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { News } from '../../model/News';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-news',
@@ -12,10 +13,11 @@ import { News } from '../../model/News';
 export class NewsComponent implements OnInit {
 
   public isLoaded: boolean;
+  public isLogged: boolean;
   private id: number;
   public news: News;
 
-  constructor(private newsService: NewsService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private newsService: NewsService, private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -30,6 +32,7 @@ export class NewsComponent implements OnInit {
         console.log(error);
       })
 
+    this.isLogged = this.authService.isAuthenticated();
   }
 
   public delete() {
@@ -42,6 +45,10 @@ export class NewsComponent implements OnInit {
       .catch(error => {
         alert(error);
       })
+  }
+
+  public update() {
+    this.router.navigate(['/edit_news/' + this.id]);
   }
 
 }

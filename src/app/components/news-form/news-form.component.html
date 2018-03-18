@@ -1,5 +1,6 @@
-<div class="layout">
-  <h3>Нова вест:</h3>
+<div *ngIf="isLoaded" class="layout">
+  <h3 *ngIf="!editMode">Нова вест:</h3>
+  <h3 *ngIf="editMode">Измени вест:</h3>
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="header">Наслов:</label>
@@ -8,10 +9,11 @@
 
     <div class="form-group">
         <label for="content">Садржај:</label>
-        <textarea class="form-control" name="content" id="content" [(ngModel)]="news.content"></textarea>
+        <textarea rows="20" class="form-control" name="content" id="content" [(ngModel)]="news.content"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Додај вест</button>
+    <button *ngIf="!editMode" type="submit" class="btn btn-primary">Додај вест</button>
+    <button *ngIf="editMode" type="submit" class="btn btn-primary">Измени вест</button>
   </form>
   <p class="error">{{ error }}</p>
 </div>

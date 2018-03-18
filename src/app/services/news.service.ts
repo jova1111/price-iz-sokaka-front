@@ -44,8 +44,6 @@ export class NewsService {
         },
         error => {
           console.log(error);
-          alert(error);
-          alert(error.message);
           reject(error.message);
         }
       )
@@ -57,12 +55,28 @@ export class NewsService {
       let tokenStr = localStorage.getItem("token");
       let token = JSON.parse(tokenStr).value;
       let headers = new HttpHeaders({"Authorization": "Bearer " + token});
-      this.http.delete('https://frozen-coast-28508.herokuapp.com/api/news/' + id).subscribe(
+      this.http.delete('https://frozen-coast-28508.herokuapp.com/api/news/' + id, { headers: headers} ).subscribe(
         success => {
           resolve('Успешно избрисано.');
         },
         error => {
           reject('Грешка приликом брисања.');
+        }
+      );
+    });
+  }
+
+  public update(id, updatedNews: News) {
+    return new Promise((resolve, reject) => {
+      let tokenStr = localStorage.getItem("token");
+      let token = JSON.parse(tokenStr).value;
+      let headers = new HttpHeaders({"Authorization": "Bearer " + token});
+      this.http.put('http://127.0.0.1:8000/api/news/' + id, updatedNews, { headers: headers}).subscribe(
+        success => {
+          resolve('Успешно измењено.');
+        },
+        error => {
+          reject('Грешка приликом измене.');
         }
       );
     });

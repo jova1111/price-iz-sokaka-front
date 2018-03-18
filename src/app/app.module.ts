@@ -17,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'news', component: NewsListComponent },
   { path: 'news/:id', component: NewsComponent },
+  { path: 'edit_news/:id', component: NewsFormComponent},
   { path: 'add_news', component: NewsFormComponent },
   { path: '',
     redirectTo: 'news',

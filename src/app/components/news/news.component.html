@@ -1,6 +1,9 @@
 <div *ngIf="isLoaded">
   <h2>{{ news.header }}</h2>
-  <p>{{ news.content }}</p>
-  <hr>
-  <input type="button" value="Избриши вест" class="btn btn-danger" (click)="delete()">
+  <textarea rows="30" readonly>{{ news.content }}</textarea>
+  <div *ngIf="isLogged">
+    <hr>
+    <input type="button" value="Измени вест" class="btn btn-primary" (click)="update()">
+    <input type="button" value="Избриши вест" class="btn btn-danger" (click)="delete()">
+  </div>
 </div>
