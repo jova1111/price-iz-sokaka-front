@@ -1,6 +1,6 @@
 <div *ngIf="isLoaded">
   <h2>{{ news.header }}</h2>
-  <textarea rows="30" readonly>{{ news.content }}</textarea>
+  <pre>{{ news.content }}</pre>
   <div *ngIf="isLogged">
     <hr>
     <input type="button" value="Измени вест" class="btn btn-primary" (click)="update()">

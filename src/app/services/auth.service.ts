@@ -18,7 +18,7 @@ export class AuthService {
       password: user.password
     };
     return new Promise((resolve, reject)=> {
-      this.http.post('https://frozen-coast-28508.herokuapp.com/api/authenticate', data).subscribe(
+      this.http.post('https://price-iz-sokaka.herokuapp.com/api/authenticate', data).subscribe(
         (response: any) => {
           this.authenticate(response.token, response.expires_in);
           resolve("Successfully logged in!");
@@ -51,7 +51,7 @@ export class AuthService {
     let user = { email: 'rada@gmail.com', name: "biliciku", password: "biliciku95"}
     const headers: HttpHeaders = new HttpHeaders({'X-Requested-With': 'XMLHttpRequest'})
                                      .append('Content-Type', 'application/json');
-    return this.http.post('https://frozen-coast-28508.herokuapp.com/api/user', user, { headers: headers } ).subscribe(
+    return this.http.post('https://price-iz-sokaka.herokuapp.com/api/user', user, { headers: headers } ).subscribe(
       (success) => {
         console.log(success)
       }, (error) => {

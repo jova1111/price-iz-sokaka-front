@@ -9,7 +9,7 @@ export class NewsService {
 
   public getAllNews() {
     return new Promise((resolve, reject) => {
-      this.http.get('https://frozen-coast-28508.herokuapp.com/api/news').subscribe(
+      this.http.get('https://price-iz-sokaka.herokuapp.com/api/news').subscribe(
           (success) => {
             resolve(success);
           },
@@ -22,7 +22,7 @@ export class NewsService {
 
   public getById(id) {
     return new Promise((resolve, reject) => {
-      this.http.get('https://frozen-coast-28508.herokuapp.com/api/news/' + id).subscribe(
+      this.http.get('https://price-iz-sokaka.herokuapp.com/api/news/' + id).subscribe(
         success => {
           resolve(success);
         },
@@ -38,7 +38,7 @@ export class NewsService {
       let tokenStr = localStorage.getItem("token");
       let token = JSON.parse(tokenStr).value;
       let headers = new HttpHeaders({"Authorization": "Bearer " + token});
-      this.http.post('https://frozen-coast-28508.herokuapp.com/api/news', news, {headers: headers}).subscribe(
+      this.http.post('https://price-iz-sokaka.herokuapp.com/api/news', news, {headers: headers}).subscribe(
         success => {
           resolve(success);
         },
@@ -55,7 +55,7 @@ export class NewsService {
       let tokenStr = localStorage.getItem("token");
       let token = JSON.parse(tokenStr).value;
       let headers = new HttpHeaders({"Authorization": "Bearer " + token});
-      this.http.delete('https://frozen-coast-28508.herokuapp.com/api/news/' + id, { headers: headers} ).subscribe(
+      this.http.delete('https://price-iz-sokaka.herokuapp.com/api/news/' + id, { headers: headers} ).subscribe(
         success => {
           resolve('Успешно избрисано.');
         },
@@ -71,7 +71,7 @@ export class NewsService {
       let tokenStr = localStorage.getItem("token");
       let token = JSON.parse(tokenStr).value;
       let headers = new HttpHeaders({"Authorization": "Bearer " + token});
-      this.http.put('http://127.0.0.1:8000/api/news/' + id, updatedNews, { headers: headers}).subscribe(
+      this.http.put('https://price-iz-sokaka.herokuapp.com/api/news/' + id, updatedNews, { headers: headers}).subscribe(
         success => {
           resolve('Успешно измењено.');
         },
