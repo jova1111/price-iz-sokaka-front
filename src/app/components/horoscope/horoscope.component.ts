@@ -22,7 +22,6 @@ export class HoroscopeComponent implements OnInit {
     this.horoscopeService.getActive()
       .then(horoscopeJson => {
         this.horoscope = new Horoscope(horoscopeJson);
-        console.log(this.horoscope);
         this.isLoaded = true;
       })
       .catch(error => {

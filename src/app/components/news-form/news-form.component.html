@@ -12,8 +12,8 @@
         <textarea rows="20" class="form-control" name="content" id="content" [(ngModel)]="news.content"></textarea>
     </div>
 
-    <button *ngIf="!editMode" type="submit" class="btn btn-primary">Додај вест</button>
-    <button *ngIf="editMode" type="submit" class="btn btn-primary">Измени вест</button>
+    <button *ngIf="!editMode" type="submit" class="btn btn-primary">Додај</button>
+    <button *ngIf="editMode" type="submit" class="btn btn-primary">Измени</button>
   </form>
   <p class="error">{{ error }}</p>
 </div>

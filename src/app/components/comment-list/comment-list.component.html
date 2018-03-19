@@ -1,0 +1,11 @@
+<div *ngIf="!isLoaded">
+  <app-spin-loader></app-spin-loader>
+</div>
+
+<div *ngIf="isLoaded" class="main-container">
+  <h3>Коментари</h3>
+  <div *ngFor="let comment of allComments.slice().reverse()">  
+    <app-comment [comment]="comment"></app-comment>
+    <hr>
+  </div>
+</div>

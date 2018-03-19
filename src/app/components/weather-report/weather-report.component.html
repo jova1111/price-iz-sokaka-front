@@ -1,0 +1,13 @@
+<div *ngIf="!isLoaded" class="spin-container">
+    <app-spin-loader></app-spin-loader>
+  </div>
+  
+  <div *ngIf="isLoaded" class="main-container">
+    <h3>Временска прогноза за {{ weatherReport.dateCreated | date: 'dd.MM.yyyy.'}}</h3>
+    <div [innerHTML]="weatherReport.content" class="content"></div>
+    <div *ngIf="isLogged">
+      <hr>
+      <input type="button" value="Измени" class="btn btn-primary" (click)="update()">
+      <input type="button" value="Избриши" class="btn btn-danger" (click)="delete()">
+    </div>
+  </div>

@@ -12,7 +12,11 @@
   <div [innerHTML]="horoscope.content" class="content"></div>
   <div *ngIf="isLogged">
     <hr>
-    <input type="button" value="Измени хороскоп" class="btn btn-primary" (click)="update()">
-    <input type="button" value="Избриши хороскоп" class="btn btn-danger" (click)="delete()">
+    <input type="button" value="Измени" class="btn btn-primary" (click)="update()">
+    <input type="button" value="Избриши" class="btn btn-danger" (click)="delete()">
+  </div>
+  <div *ngIf="horoscope.content">
+    <hr>
+    <app-comment-list [commentableId]="horoscope.id" [commentType]="'horoscope'"></app-comment-list>
   </div>
 </div>

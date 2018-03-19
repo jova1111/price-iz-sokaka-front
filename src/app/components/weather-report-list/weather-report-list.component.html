@@ -1,0 +1,13 @@
+<div *ngIf="!isLoaded" class="spin-container">
+  <app-spin-loader></app-spin-loader>
+</div>
+<div *ngIf="isLoaded">
+  <div *ngIf="isLogged" >
+    <a routerLink="/add_weather_report">Додај нову временску прогнозу</a>
+    <hr>
+  </div>
+  <div *ngFor="let weatherReport of allWeatherReports.slice().reverse()">
+    <app-weather-report-preview [weatherReport]="weatherReport"></app-weather-report-preview>
+    <hr>
+  </div>       
+</div>

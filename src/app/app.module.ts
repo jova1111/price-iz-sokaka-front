@@ -18,6 +18,15 @@ import { HoroscopeFormComponent } from './components/horoscope-form/horoscope-fo
 import { NewsService } from './services/news.service';
 import { HoroscopeService } from './services/horoscope.service';
 import { HoroscopeComponent } from './components/horoscope/horoscope.component';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
+import { CommentService } from './services/comment.service';
+import { WeatherReportListComponent } from './components/weather-report-list/weather-report-list.component';
+import { WeatherReportComponent } from './components/weather-report/weather-report.component';
+import { WeatherReportFormComponent } from './components/weather-report-form/weather-report-form.component';
+import { WeatherReportPreviewComponent } from './components/weather-report-preview/weather-report-preview.component';
+import { WeatherReportService } from './services/weather-report.service';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -28,6 +37,10 @@ const appRoutes: Routes = [
   { path: 'horoscope', component: HoroscopeComponent },
   { path: 'add_horoscope', component: HoroscopeFormComponent },
   { path: 'edit_horoscope/:id', component: HoroscopeFormComponent },
+  { path: 'weather_report', component: WeatherReportListComponent },
+  { path: 'weather_report/:id', component: WeatherReportComponent },
+  { path: 'edit_weather_report/:id', component:  WeatherReportFormComponent },
+  { path: 'add_weather_report', component:  WeatherReportFormComponent },
   { path: '',
     redirectTo: 'news',
     pathMatch: 'full'
@@ -45,7 +58,14 @@ const appRoutes: Routes = [
     NewsFormComponent,
     SpinLoaderComponent,
     HoroscopeFormComponent,
-    HoroscopeComponent
+    HoroscopeComponent,
+    CommentListComponent,
+    CommentComponent,
+    AddCommentComponent,
+    WeatherReportListComponent,
+    WeatherReportComponent,
+    WeatherReportFormComponent,
+    WeatherReportPreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +76,7 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [ AuthService, NewsService, HoroscopeService ],
+  providers: [ AuthService, NewsService, HoroscopeService, CommentService, WeatherReportService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

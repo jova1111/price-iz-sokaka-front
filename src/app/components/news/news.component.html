@@ -8,7 +8,9 @@
   <div [innerHTML]="news.content" class="content"></div>
   <div *ngIf="isLogged">
     <hr>
-    <input type="button" value="Измени вест" class="btn btn-primary" (click)="update()">
-    <input type="button" value="Избриши вест" class="btn btn-danger" (click)="delete()">
+    <input type="button" value="Измени" class="btn btn-primary" (click)="update()">
+    <input type="button" value="Избриши" class="btn btn-danger" (click)="delete()">
   </div>
+  <hr>
+  <app-comment-list [commentableId]="news.id" [commentType]="'news'"></app-comment-list>
 </div>

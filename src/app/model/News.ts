@@ -5,7 +5,7 @@ export class News {
     public dateCreated: Date;
 
     constructor (json) {
-        if (!json) {
+        if(!json) {
             this.id = 0;
             this.header = "";
             this.content = "";

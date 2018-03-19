@@ -1,10 +1,10 @@
 <div *ngIf="isLoaded" class="layout">
-  <h3 *ngIf="!editMode">Нов хороскоп:</h3>
-  <h3 *ngIf="editMode">Измени хороскоп:</h3>
+  <h3 *ngIf="!editMode">Новa временска прогноза:</h3>
+  <h3 *ngIf="editMode">Измени временску прогнозу:</h3>
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="content">Садржај:</label>
-        <textarea rows="20" class="form-control" name="content" id="content" [(ngModel)]="horoscope.content"></textarea>
+        <textarea rows="20" class="form-control" name="content" id="content" [(ngModel)]="weatherReport.content"></textarea>
     </div>
 
     <button *ngIf="!editMode" type="submit" class="btn btn-primary">Додај</button>

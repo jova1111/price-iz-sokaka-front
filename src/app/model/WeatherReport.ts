@@ -1,13 +1,13 @@
-export class Horoscope {
+export class WeatherReport {
     public id;
     public content;
     public dateCreated;
 
     constructor(json) {
         if(!json) {
-            this.id = 0;
+            this.id = -1;
             this.content = "";
-            this.dateCreated = null;
+            this.dateCreated = "";
         } else {
             this.id = json.id;
             this.content = json.content;
