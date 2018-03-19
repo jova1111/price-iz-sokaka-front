@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewsListComponent } from './components/news-list/news-list.component';
 import { NewsPreviewComponent } from './components/news-preview/news-preview.component';
 import { NewsFormComponent } from './components/news-form/news-form.component';
+import { SpinLoaderComponent } from './components/spin-loader/spin-loader.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     NewsComponent,
     NewsListComponent,
     NewsPreviewComponent,
-    NewsFormComponent
+    NewsFormComponent,
+    SpinLoaderComponent
   ],
   imports: [
     BrowserModule,

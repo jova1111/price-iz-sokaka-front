@@ -1,5 +1,10 @@
-<div *ngIf="isLoaded">
+<div *ngIf="!isLoaded" class="spin-container">
+  <app-spin-loader></app-spin-loader>
+</div>
+
+<div *ngIf="isLoaded" class="main-container">
   <h2>{{ news.header }}</h2>
+  <div class="date-created">{{ news.dateCreated | date: 'dd.MM.yyyy. HH:mm'}}</div>
   <div [innerHTML]="news.content" class="content"></div>
   <div *ngIf="isLogged">
     <hr>

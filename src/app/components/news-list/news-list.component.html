@@ -1,3 +1,6 @@
+<div *ngIf="!isLoaded" class="spin-container">
+  <app-spin-loader></app-spin-loader>
+</div>
 <div *ngIf="isLoaded">
   <div *ngIf="isLogged" >
     <a routerLink="/add_news">Додај нову вест</a>
