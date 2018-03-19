@@ -1,0 +1,23 @@
+@media (min-width: 768px){
+    .navbar-nav {
+        margin: 0 auto;
+        display: table;
+        table-layout: auto;
+        float: none;
+        width: 100%;
+    }
+    .navbar-nav>li {
+        display: table-cell;
+        float: none;
+        text-align: center;
+    }
+} 
+
+li a:hover {
+    background-color: #111;
+}
+
+.active {
+    background-color: #595959;
+    color: white !important;
+}

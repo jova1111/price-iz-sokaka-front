@@ -1,10 +1,10 @@
-<nav class="navbar">
-  <ul class="nav nav-tabs nav-justified">
-    <li><a routerLink="/news">Вести</a></li>
-    <li><a href="#">Слике</a></li>
-    <li><a href="#">Видео</a></li>
-    <li><a href="#">Временска прогноза</a></li>
-    <li><a href="#">Хороскоп</a></li>
-    <li><a href="#">Контакт</a></li>
+<nav class="navbar navbar-inverse">
+  <ul class="nav navbar-nav">
+    <li><a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['active']" routerLink="/news">Вести</a></li>
+    <li><a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['active']" >Слике</a></li>
+    <li><a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['active']" href="#">Видео</a></li>
+    <li><a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['active']" href="#">Временска прогноза</a></li>
+    <li><a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['active']" href="#">Хороскоп</a></li>
+    <li><a [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['active']" href="#">Контакт</a></li>
   </ul>
 </nav>
