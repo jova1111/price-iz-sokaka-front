@@ -1,4 +1,9 @@
 <div class="weather-report-preview">
-  <a routerLink="/weather_report/{{ weatherReport.id }}"><h3>Временска прогноза за {{ weatherReport.dateCreated | date: 'dd.MM.yyyy.'}}</h3></a>
-  <div class="date-created"></div>
+    <h3>Временска прогноза за {{ weatherReport.dateCreated | date: 'dd.MM.yyyy.'}}</h3>
+    <div [innerHTML]="weatherReport.content" class="content"></div>
+    <div *ngIf="isLogged">
+      <hr>
+      <input type="button" value="Измени" class="btn btn-primary" (click)="update()">
+      <input type="button" value="Избриши" class="btn btn-danger" (click)="delete()">
+    </div>
 </div>

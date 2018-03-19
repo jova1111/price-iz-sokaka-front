@@ -3,7 +3,12 @@
 </div>
 
 <div *ngIf="isLoaded" class="main-container">
+  <div>
+      <textarea placeholder="Коментар..." class="form-control" rows="2" [(ngModel)]="content"></textarea>
+      <input type="button" style="margin-top: 20px" class="btn btn-primary" value="Постави" (click)="onSubmit()">
+  </div>
   <h3>Коментари</h3>
+  <div *ngIf="allComments.length == 0">Нема коментара.</div>
   <div *ngFor="let comment of allComments.slice().reverse()">  
     <app-comment [comment]="comment"></app-comment>
     <hr>

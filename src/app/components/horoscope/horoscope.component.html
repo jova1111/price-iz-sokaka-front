@@ -9,8 +9,9 @@
       <a routerLink="/add_horoscope">Додај нов хороскоп</a>
       <hr>
   </div>
+  <div *ngIf="!horoscope.content">Нема активних хороскопа.</div>
   <div [innerHTML]="horoscope.content" class="content"></div>
-  <div *ngIf="isLogged">
+  <div *ngIf="isLogged && horoscope.content">
     <hr>
     <input type="button" value="Измени" class="btn btn-primary" (click)="update()">
     <input type="button" value="Избриши" class="btn btn-danger" (click)="delete()">

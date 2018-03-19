@@ -50,7 +50,7 @@ export class WeatherReportFormComponent implements OnInit {
         this.weatherReportService.update(this.id, this.weatherReport)
           .then(success => {
             alert("Успешно апдејтово.");
-            this.router.navigate(['/weather_report/' + this.id]);
+            this.router.navigate(['/weather_report']);
             window.location.reload();
           })
           .catch(error => {

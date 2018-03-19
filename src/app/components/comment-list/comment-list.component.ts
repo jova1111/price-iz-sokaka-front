@@ -15,6 +15,7 @@ export class CommentListComponent implements OnInit {
   @Input()
   public commentableId;
   public isLoaded: boolean;
+  public content;
 
   constructor(private commentService: CommentService) { 
     
@@ -27,7 +28,6 @@ export class CommentListComponent implements OnInit {
   public getComments() {
     this.commentService.getComments(this.commentableId, this.commentType)
       .then(responseComments => {
-        console.log(this.isLoaded)
         for(let index in responseComments) {
           this.allComments.push(new Comment(responseComments[index]));
         }
@@ -38,4 +38,14 @@ export class CommentListComponent implements OnInit {
       });
   }
 
+  public onSubmit() {
+    this.commentService.add(this.commentableId, this.commentType, this.content)
+      .then(success => {
+        this.allComments.push(new Comment(success));
+        this.content = "";
+      })
+      .catch(error => {
+        console.log(error)
+      });
+  }
 }

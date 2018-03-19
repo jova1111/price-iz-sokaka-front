@@ -38,7 +38,7 @@ export class NewsComponent implements OnInit {
     this.newsService.delete(this.id)
       .then(success => {
         alert(success);
-        this.router.navigate(['/']);
+        this.router.navigate(['/news']);
         window.location.reload(true);
       })
       .catch(error => {

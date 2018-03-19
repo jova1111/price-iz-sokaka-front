@@ -33,7 +33,6 @@ export class HoroscopeComponent implements OnInit {
     this.horoscopeService.delete(this.horoscope.id)
       .then(success => {
         alert(success);
-        this.router.navigate(['/horoscope']);
         window.location.reload(true);
       })
       .catch(error => {

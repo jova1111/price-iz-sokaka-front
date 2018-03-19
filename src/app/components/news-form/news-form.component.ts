@@ -43,7 +43,7 @@ export class NewsFormComponent implements OnInit {
       if(!this.editMode) {
       this.newsService.save(this.news)
         .then(succes => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/news']);
           window.location.reload();
         })
         .catch(error => console.log(error));
@@ -51,7 +51,7 @@ export class NewsFormComponent implements OnInit {
         this.newsService.update(this.id, this.news)
           .then(success => {
             alert("Успешно апдејтово.");
-            this.router.navigate(['/']);
+            this.router.navigate(['/news']);
             window.location.reload();
           })
           .catch(error => {

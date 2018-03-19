@@ -27,6 +27,8 @@ import { WeatherReportComponent } from './components/weather-report/weather-repo
 import { WeatherReportFormComponent } from './components/weather-report-form/weather-report-form.component';
 import { WeatherReportPreviewComponent } from './components/weather-report-preview/weather-report-preview.component';
 import { WeatherReportService } from './services/weather-report.service';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { CommentFormComponent } from './components/comment-form/comment-form.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -41,8 +43,9 @@ const appRoutes: Routes = [
   { path: 'weather_report/:id', component: WeatherReportComponent },
   { path: 'edit_weather_report/:id', component:  WeatherReportFormComponent },
   { path: 'add_weather_report', component:  WeatherReportFormComponent },
+  { path: 'home', component: HomepageComponent },
   { path: '',
-    redirectTo: 'news',
+    redirectTo: 'home',
     pathMatch: 'full'
   }
 ];
@@ -65,7 +68,9 @@ const appRoutes: Routes = [
     WeatherReportListComponent,
     WeatherReportComponent,
     WeatherReportFormComponent,
-    WeatherReportPreviewComponent
+    WeatherReportPreviewComponent,
+    HomepageComponent,
+    CommentFormComponent
   ],
   imports: [
     BrowserModule,

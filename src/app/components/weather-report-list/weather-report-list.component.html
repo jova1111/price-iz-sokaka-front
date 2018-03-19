@@ -6,8 +6,9 @@
     <a routerLink="/add_weather_report">Додај нову временску прогнозу</a>
     <hr>
   </div>
+  <div *ngIf="allWeatherReports.length == 0">Нема временских прогноза.</div>
   <div *ngFor="let weatherReport of allWeatherReports.slice().reverse()">
     <app-weather-report-preview [weatherReport]="weatherReport"></app-weather-report-preview>
     <hr>
-  </div>       
+  </div>
 </div>

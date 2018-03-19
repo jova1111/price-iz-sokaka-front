@@ -34,20 +34,4 @@ export class WeatherReportComponent implements OnInit {
     this.isLogged = this.authService.isAuthenticated();
   }
 
-  public delete() {
-    this.weatherReportService.delete(this.id)
-      .then(success => {
-        alert(success);
-        this.router.navigate(['/weather_report']);
-        window.location.reload(true);
-      })
-      .catch(error => {
-        alert(error);
-      })
-  }
-
-  public update() {
-    this.router.navigate(['/edit_weather_report/' + this.id]);
-  }
-
 }
