@@ -1,32 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { News } from '../../model/News';
+import { Horoscope } from '../../model/Horoscope';
 import { NewsService } from '../../services/news.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/finally';
+import { HoroscopeService } from '../../services/horoscope.service';
 
 @Component({
-  selector: 'app-news-form',
-  templateUrl: './news-form.component.html',
-  styleUrls: ['./news-form.component.css']
+  selector: 'app-horoscope-form',
+  templateUrl: './horoscope-form.component.html',
+  styleUrls: ['./horoscope-form.component.css']
 })
-export class NewsFormComponent implements OnInit {
+export class HoroscopeFormComponent implements OnInit {
 
-  public news = new News("");
+  public horoscope= new Horoscope("");
   public error: string;
   public editMode: boolean;
   private id: number;
   public isLoaded: boolean;
 
-  constructor(private newsService: NewsService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private horoscopeService: HoroscopeService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       if(params["id"]) {
         this.id = +params["id"];
         this.editMode = true;
-        this.newsService.getById(this.id)
+        this.horoscopeService.getById(this.id)
           .then(news => {
-            this.news = new News(news);
+            this.horoscope = new Horoscope(news);
             this.isLoaded = true;
           })
           .catch(error => {
@@ -41,17 +41,17 @@ export class NewsFormComponent implements OnInit {
 
   public onSubmit() {
       if(!this.editMode) {
-      this.newsService.save(this.news)
+      this.horoscopeService.save(this.horoscope)
         .then(succes => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/horoscope']);
           window.location.reload();
         })
         .catch(error => console.log(error));
       } else {
-        this.newsService.update(this.id, this.news)
+        this.horoscopeService.update(this.id, this.horoscope)
           .then(success => {
             alert("Успешно апдејтово.");
-            this.router.navigate(['/']);
+            this.router.navigate(['/horoscope']);
             window.location.reload();
           })
           .catch(error => {

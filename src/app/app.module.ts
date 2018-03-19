@@ -14,6 +14,10 @@ import { NewsListComponent } from './components/news-list/news-list.component';
 import { NewsPreviewComponent } from './components/news-preview/news-preview.component';
 import { NewsFormComponent } from './components/news-form/news-form.component';
 import { SpinLoaderComponent } from './components/spin-loader/spin-loader.component';
+import { HoroscopeFormComponent } from './components/horoscope-form/horoscope-form.component';
+import { NewsService } from './services/news.service';
+import { HoroscopeService } from './services/horoscope.service';
+import { HoroscopeComponent } from './components/horoscope/horoscope.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -21,6 +25,9 @@ const appRoutes: Routes = [
   { path: 'news/:id', component: NewsComponent },
   { path: 'edit_news/:id', component: NewsFormComponent},
   { path: 'add_news', component: NewsFormComponent },
+  { path: 'horoscope', component: HoroscopeComponent },
+  { path: 'add_horoscope', component: HoroscopeFormComponent },
+  { path: 'edit_horoscope/:id', component: HoroscopeFormComponent },
   { path: '',
     redirectTo: 'news',
     pathMatch: 'full'
@@ -36,7 +43,9 @@ const appRoutes: Routes = [
     NewsListComponent,
     NewsPreviewComponent,
     NewsFormComponent,
-    SpinLoaderComponent
+    SpinLoaderComponent,
+    HoroscopeFormComponent,
+    HoroscopeComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,7 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [ AuthService ],
+  providers: [ AuthService, NewsService, HoroscopeService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

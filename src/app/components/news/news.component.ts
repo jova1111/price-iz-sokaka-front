@@ -7,8 +7,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css'],
-  providers: [ NewsService ]
+  styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
 
