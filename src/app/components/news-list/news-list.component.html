@@ -3,8 +3,21 @@
     <a routerLink="/add_news">Додај нову вест</a>
     <hr>
   </div>
-  <div *ngFor="let news of allNews">
+  <div *ngFor="let news of allNews.slice().reverse() | paginate: { id: 'pagination', itemsPerPage: 10, currentPage: pageNumber  }">
     <app-news-preview [news]="news"></app-news-preview>
     <hr>
   </div>
+  <pagination-controls *ngIf="allNews.length > 10" id="pagination"
+                        (pageChange)="pageChanged($event)"
+                        maxSize="10"
+                        directionLinks="true"
+                        autoHide="false"
+                        previousLabel="Претходна"
+                        nextLabel="Следећа"
+                        screenReaderPaginationLabel="Pagination"
+                        screenReaderPageLabel="page"
+                        screenReaderCurrentLabel="You're on page">
+                      </pagination-controls>
+
+                  
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { NewsService } from '../../services/news.service';
 import { News } from '../../model/News';
@@ -14,6 +14,10 @@ export class NewsListComponent implements OnInit {
   public isLogged: boolean;
   public isLoaded: boolean;
   public allNews: News[] = [];
+  public pageNumber = 1;
+  @Input() id: string;
+  @Input() maxSize: number;
+  @Output() pageChange: EventEmitter<number>;
 
   constructor(private authService: AuthService, private newsService: NewsService) { }
 
@@ -29,6 +33,10 @@ export class NewsListComponent implements OnInit {
       .catch(error => {
         console.error(error);
       });
+  }
+
+  pageChanged(pageNum) {
+    this.pageNumber = pageNum;
   }
 
 }

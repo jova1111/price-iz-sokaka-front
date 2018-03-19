@@ -9,3 +9,8 @@
     white-space: nowrap;
     width: 100%;
 }
+
+.date-created {
+    margin-top: 10px;
+    color: gray;
+}

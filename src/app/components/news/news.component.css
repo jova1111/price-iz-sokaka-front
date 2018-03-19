@@ -1,8 +1,4 @@
-textarea {
-    border: 0; 
-    background-color: transparent;
-    width: 100%;
-    border-style: none; 
-    border-color: transparent; 
-    overflow: auto; 
+.content {
+    white-space: pre-wrap;
+    padding: 1em;
 }
