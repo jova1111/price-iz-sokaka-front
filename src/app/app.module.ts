@@ -32,6 +32,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { MyAutofocusDirective } from './directives/my-autofocus.directive';
+import { PicturesComponent } from './components/pictures/pictures.component';
+import { VideosComponent } from './components/videos/videos.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -48,6 +50,8 @@ const appRoutes: Routes = [
   { path: 'add_weather_report', component:  WeatherReportFormComponent },
   { path: 'home', component: HomepageComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'pictures', component: PicturesComponent },
+  { path: 'videos', component: VideosComponent },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -76,7 +80,9 @@ const appRoutes: Routes = [
     HomepageComponent,
     CommentFormComponent,
     ContactComponent,
-    MyAutofocusDirective
+    MyAutofocusDirective,
+    PicturesComponent,
+    VideosComponent
   ],
   imports: [
     BrowserModule,
