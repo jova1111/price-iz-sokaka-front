@@ -9,7 +9,7 @@ export class ContactService {
 
   contact(content) {
     return new Promise((resolve, reject) => {
-      this.http.post('http://127.0.0.1:8000/api/contact_message', { content: content }).subscribe(
+      this.http.post('https://price-iz-sokaka.herokuapp.com/api/contact_message', { content: content }).subscribe(
           success => {
             resolve('Порука успешно послатa.');
           },
