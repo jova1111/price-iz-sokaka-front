@@ -1,7 +1,7 @@
 <div class="main-container">
   <h4>Aко имате било какав коментар на садржај сајта, пошаљите нам га преко следеће форме:</h4>
   <br>
-  <form>
+  <form *ngIf="!isLoading">
     <div class="form-group">
       <label for="content">Садржај:</label>
       <textarea myAutofocus name="content" style="resize: none;" id="content" class="form-control" rows="5" [(ngModel)]="content"></textarea>
@@ -9,4 +9,5 @@
     </div>
     <input type="submit" class="btn btn-primary" value="Контактирај" (click)="onSubmit()">
   </form>
+  <app-spin-loader *ngIf="isLoading"></app-spin-loader>
 </div>

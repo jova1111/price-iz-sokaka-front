@@ -5,14 +5,13 @@ import { Router } from '@angular/router';
 @Injectable()
 export class ContactService {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   contact(content) {
     return new Promise((resolve, reject) => {
-      this.http.post('https://price-iz-sokaka.herokuapp.com/api/contact_message', { content: content }).subscribe(
+      this.http.post('http://127.0.0.1:8000/api/contact_message', { content: content }).subscribe(
           success => {
             resolve('Порука успешно послатa.');
-            this.router.navigate(['/']);
           },
           error => {
             console.log(error)

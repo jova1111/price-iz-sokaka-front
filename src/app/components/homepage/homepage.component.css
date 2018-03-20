@@ -13,5 +13,7 @@
 .picture {
     float: right;
     margin: 30px;
-    height: 50%;
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
 }

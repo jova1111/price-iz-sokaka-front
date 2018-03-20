@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -10,8 +11,9 @@ export class ContactComponent implements OnInit {
 
   public content: string;
   public error: string;
+  public isLoading: boolean;
 
-  constructor(private contactService: ContactService) { }
+  constructor(private contactService: ContactService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -22,12 +24,16 @@ export class ContactComponent implements OnInit {
       this.error = "Садржај не сме бити празан.";
       return;
     }
+    this.isLoading = true;
     this.contactService.contact(this.content)
       .then(success => {
-        alert(success);
+        this.isLoading = false;
+        alert(success);    
+        this.router.navigate(['/']);
       })
       .catch(error => {
-        alert(error)
+        this.isLoading = false;
+        alert(error);
       });
   }
 
