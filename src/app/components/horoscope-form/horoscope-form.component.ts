@@ -3,6 +3,7 @@ import { Horoscope } from '../../model/Horoscope';
 import { NewsService } from '../../services/news.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HoroscopeService } from '../../services/horoscope.service';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-horoscope-form',
@@ -17,7 +18,7 @@ export class HoroscopeFormComponent implements OnInit {
   private id: number;
   public isLoaded: boolean;
 
-  constructor(private horoscopeService: HoroscopeService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private toastManager: ToastsManager, private horoscopeService: HoroscopeService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -43,19 +44,20 @@ export class HoroscopeFormComponent implements OnInit {
       if(!this.editMode) {
       this.horoscopeService.save(this.horoscope)
         .then(succes => {
+          this.toastManager.success("Хороскоп успешно додат.");
           this.router.navigate(['/horoscope']);
-          window.location.reload();
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+          this.toastManager.error("Дошло је до грешке приликом додавања.");
+        });
       } else {
         this.horoscopeService.update(this.id, this.horoscope)
           .then(success => {
-            alert("Успешно апдејтово.");
+            this.toastManager.success("Хороскоп успешно измењен.");
             this.router.navigate(['/horoscope']);
-            window.location.reload();
           })
           .catch(error => {
-            alert("Дошло је до грешке приликом апдејтовања.");
+            this.toastManager.error("Дошло је до грешке приликом измене");
           })
       }
   }

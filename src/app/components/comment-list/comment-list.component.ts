@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from '../../services/comment.service';
 import { Comment } from '../../model/Comment';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-comment-list',
@@ -16,8 +17,9 @@ export class CommentListComponent implements OnInit {
   public commentableId;
   public isLoaded: boolean;
   public content;
+  public isAddingComment: boolean;
 
-  constructor(private commentService: CommentService) { 
+  constructor(private toastManager: ToastsManager, private commentService: CommentService) { 
     
   }
 
@@ -39,13 +41,17 @@ export class CommentListComponent implements OnInit {
   }
 
   public onSubmit() {
+    this.isAddingComment = true;
     this.commentService.add(this.commentableId, this.commentType, this.content)
       .then(success => {
         this.allComments.push(new Comment(success));
         this.content = "";
+        this.toastManager.success("Koментар успешно постављен.");
+        this.isAddingComment = false;
       })
       .catch(error => {
-        console.log(error)
+        this.toastManager.error("Дошло је до грешке приликом постављања коментара.");
+        this.isAddingComment = false;
       });
   }
 }

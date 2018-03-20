@@ -3,6 +3,7 @@ import { NewsService } from '../../services/news.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { News } from '../../model/News';
 import { AuthService } from '../../services/auth.service';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-news',
@@ -16,7 +17,7 @@ export class NewsComponent implements OnInit {
   private id: number;
   public news: News;
 
-  constructor(private newsService: NewsService, private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
+  constructor(private toastManager: ToastsManager, private newsService: NewsService, private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -37,12 +38,11 @@ export class NewsComponent implements OnInit {
   public delete() {
     this.newsService.delete(this.id)
       .then(success => {
-        alert(success);
+        this.toastManager.success("Успешно сте избрисали вест.");
         this.router.navigate(['/news']);
-        window.location.reload(true);
       })
       .catch(error => {
-        alert(error);
+        this.toastManager.error(error);
       })
   }
 

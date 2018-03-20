@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { News } from '../../model/News';
 import { NewsService } from '../../services/news.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/finally';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-news-form',
@@ -17,7 +18,8 @@ export class NewsFormComponent implements OnInit {
   private id: number;
   public isLoaded: boolean;
 
-  constructor(private newsService: NewsService, private router: Router, private route: ActivatedRoute) { }
+  constructor(public toastManager: ToastsManager, private newsService: NewsService, private router: Router, private route: ActivatedRoute) { 
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -42,20 +44,21 @@ export class NewsFormComponent implements OnInit {
   public onSubmit() {
       if(!this.editMode) {
       this.newsService.save(this.news)
-        .then(succes => {
+        .then(success => {
           this.router.navigate(['/news']);
-          window.location.reload();
+          this.toastManager.success("Успешно додао вест!");
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+          this.toastManager.error("Дошло је до грешке приликом додавања.");
+        });
       } else {
         this.newsService.update(this.id, this.news)
           .then(success => {
-            alert("Успешно апдејтово.");
+            this.toastManager.success("Успешно изменио вест!");
             this.router.navigate(['/news']);
-            window.location.reload();
           })
           .catch(error => {
-            alert("Дошло је до грешке приликом апдејтовања.");
+            this.toastManager.error("Дошло је до грешке приликом измене.");
           })
       }
   }

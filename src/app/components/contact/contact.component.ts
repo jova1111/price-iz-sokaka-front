@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-contact',
@@ -13,7 +14,7 @@ export class ContactComponent implements OnInit {
   public error: string;
   public isLoading: boolean;
 
-  constructor(private contactService: ContactService, private router: Router) { }
+  constructor(private toastManager: ToastsManager, private contactService: ContactService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,14 +27,14 @@ export class ContactComponent implements OnInit {
     }
     this.isLoading = true;
     this.contactService.contact(this.content)
-      .then(success => {
+      .then((success: string) => {
         this.isLoading = false;
-        alert(success);    
+        this.toastManager.success(success);   
         this.router.navigate(['/']);
       })
-      .catch(error => {
+      .catch((error: string) => {
         this.isLoading = false;
-        alert(error);
+        this.toastManager.error(error);
       });
   }
 

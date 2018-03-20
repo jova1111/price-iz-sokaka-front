@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherReport } from '../../model/WeatherReport';
 import { WeatherReportService } from '../../services/weather-report.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-weather-report-form',
@@ -16,7 +17,7 @@ export class WeatherReportFormComponent implements OnInit {
   private id: number;
   public isLoaded: boolean;
 
-  constructor(private weatherReportService: WeatherReportService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private toastManager: ToastsManager, private weatherReportService: WeatherReportService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -42,19 +43,20 @@ export class WeatherReportFormComponent implements OnInit {
       if(!this.editMode) {
       this.weatherReportService.save(this.weatherReport)
         .then(succes => {
+          this.toastManager.success("Успешно додата временска прогноза.");
           this.router.navigate(['/weather_report']);
-          window.location.reload();
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+          this.toastManager.error("Дошло је до грешке приликом додавања.");
+        });
       } else {
         this.weatherReportService.update(this.id, this.weatherReport)
           .then(success => {
-            alert("Успешно апдејтово.");
+            this.toastManager.success("Успешно измењена временска прогноза.");
             this.router.navigate(['/weather_report']);
-            window.location.reload();
           })
           .catch(error => {
-            alert("Дошло је до грешке приликом апдејтовања.");
+            this.toastManager.error("Дошло је до грешке приликом измене");
           })
       }
   }

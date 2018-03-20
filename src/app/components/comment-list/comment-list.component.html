@@ -3,10 +3,11 @@
 </div>
 
 <div *ngIf="isLoaded" class="main-container">
-  <div>
+  <div *ngIf="!isAddingComment">
       <textarea style="resize:none" placeholder="Коментар..." class="form-control" rows="3" [(ngModel)]="content"></textarea>
       <input type="button" style="margin-top: 20px" class="btn btn-primary" value="Постави" (click)="onSubmit()">
   </div>
+  <app-spin-loader *ngIf="isAddingComment"></app-spin-loader>
   <h3>Коментари</h3>
   <div *ngIf="allComments.length == 0">Нема коментара.</div>
   <div *ngFor="let comment of allComments.slice().reverse()">  

@@ -34,6 +34,9 @@ import { ContactComponent } from './components/contact/contact.component';
 import { MyAutofocusDirective } from './directives/my-autofocus.directive';
 import { PicturesComponent } from './components/pictures/pictures.component';
 import { VideosComponent } from './components/videos/videos.component';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DummyComponent } from './components/dummy/dummy.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -52,6 +55,7 @@ const appRoutes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'pictures', component: PicturesComponent },
   { path: 'videos', component: VideosComponent },
+  { path: 'dummy', component: DummyComponent },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -82,7 +86,8 @@ const appRoutes: Routes = [
     ContactComponent,
     MyAutofocusDirective,
     PicturesComponent,
-    VideosComponent
+    VideosComponent,
+    DummyComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +96,9 @@ const appRoutes: Routes = [
     NgxPaginationModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    ToastModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [ AuthService, NewsService, HoroscopeService, CommentService, WeatherReportService, ContactService ],
   bootstrap: [ AppComponent ]
