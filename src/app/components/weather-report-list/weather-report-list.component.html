@@ -7,7 +7,7 @@
     <hr>
   </div>
   <div *ngIf="allWeatherReports.length == 0">Нема временских прогноза.</div>
-  <div *ngFor="let weatherReport of allWeatherReports.slice().reverse()">
+  <div *ngFor="let weatherReport of allWeatherReports">
     <app-weather-report-preview [weatherReport]="weatherReport"></app-weather-report-preview>
     <hr>
   </div>

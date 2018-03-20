@@ -27,8 +27,11 @@ import { WeatherReportComponent } from './components/weather-report/weather-repo
 import { WeatherReportFormComponent } from './components/weather-report-form/weather-report-form.component';
 import { WeatherReportPreviewComponent } from './components/weather-report-preview/weather-report-preview.component';
 import { WeatherReportService } from './services/weather-report.service';
+import { ContactService } from './services/contact.service';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { MyAutofocusDirective } from './directives/my-autofocus.directive';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -44,6 +47,7 @@ const appRoutes: Routes = [
   { path: 'edit_weather_report/:id', component:  WeatherReportFormComponent },
   { path: 'add_weather_report', component:  WeatherReportFormComponent },
   { path: 'home', component: HomepageComponent },
+  { path: 'contact', component: ContactComponent },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -70,7 +74,9 @@ const appRoutes: Routes = [
     WeatherReportFormComponent,
     WeatherReportPreviewComponent,
     HomepageComponent,
-    CommentFormComponent
+    CommentFormComponent,
+    ContactComponent,
+    MyAutofocusDirective
   ],
   imports: [
     BrowserModule,
@@ -81,7 +87,7 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [ AuthService, NewsService, HoroscopeService, CommentService, WeatherReportService ],
+  providers: [ AuthService, NewsService, HoroscopeService, CommentService, WeatherReportService, ContactService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

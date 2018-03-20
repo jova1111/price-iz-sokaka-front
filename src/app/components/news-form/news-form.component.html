@@ -4,7 +4,7 @@
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="header">Наслов:</label>
-      <input type="text" class="form-control" name="header" id="header" [(ngModel)]="news.header">
+      <input type="text" myAutofocus class="form-control" name="header" id="header" [(ngModel)]="news.header">
     </div>
 
     <div class="form-group">
