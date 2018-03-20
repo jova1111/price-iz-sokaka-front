@@ -4,7 +4,7 @@
 
 <div *ngIf="isLoaded" class="main-container">
   <div>
-      <textarea placeholder="Коментар..." class="form-control" rows="2" [(ngModel)]="content"></textarea>
+      <textarea style="resize:none" placeholder="Коментар..." class="form-control" rows="3" [(ngModel)]="content"></textarea>
       <input type="button" style="margin-top: 20px" class="btn btn-primary" value="Постави" (click)="onSubmit()">
   </div>
   <h3>Коментари</h3>
