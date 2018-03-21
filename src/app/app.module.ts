@@ -37,6 +37,7 @@ import { VideosComponent } from './components/videos/videos.component';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DummyComponent } from './components/dummy/dummy.component';
+import { RadioComponent } from './components/radio/radio.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -87,7 +88,8 @@ const appRoutes: Routes = [
     MyAutofocusDirective,
     PicturesComponent,
     VideosComponent,
-    DummyComponent
+    DummyComponent,
+    RadioComponent
   ],
   imports: [
     BrowserModule,
