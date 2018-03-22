@@ -1,5 +1,5 @@
 <div class="weather-report-preview">
-    <h3>Временска прогноза за {{ weatherReport.dateCreated | date: 'dd.MM.yyyy.'}}</h3>
+    <h3>Временска прогноза за {{ weatherReport.dateCreated | date: 'dd. MM. yyyy.'}}</h3>
     <div [innerHTML]="weatherReport.content" class="content"></div>
     <div *ngIf="isLogged">
       <hr>

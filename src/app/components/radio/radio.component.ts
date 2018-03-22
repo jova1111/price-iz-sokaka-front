@@ -26,7 +26,7 @@ export class RadioComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.isHidden = true;
+    this.isHidden = false;
     this.changeStation();
     this.audio.play();
     this.audio.volume = 0.5;

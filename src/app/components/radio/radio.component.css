@@ -3,17 +3,30 @@
     margin: 5px;
 }
 
-.main-container {    
+.main-container {   
+    border: 1px solid #d0e1e1; 
     height: 40px;
-    opacity: 0;
+    width: 500px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    margin-left: -450px;
     background: rgb(255, 255, 255, 0.75);
-    transition: opacity 0.5s linear;
+    transition: margin-left 0.5s linear;
 }
 
+.radio-controls {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 40px;
+}
+
+.station-name {
+    width: 150px;
+    margin-left: 10px;
+}
 
 .refresh-animate {
     height: 30%;
@@ -33,10 +46,28 @@
 }
 
 .range-input {
-    width: 20%;
+    width: 30%;
 }
 
 .activated {
-    opacity: 1;
+    margin-left: 10px;
 }
 
+@media only screen and (max-width: 600px) {
+    .main-container {   
+        border: 1px solid; 
+        height: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        margin-left: -90%;
+        background: rgb(255, 255, 255, 0.75);
+        transition: margin-left 0.5s linear;
+    }
+
+    .activated {
+        margin-left: 10px;
+    }
+}
