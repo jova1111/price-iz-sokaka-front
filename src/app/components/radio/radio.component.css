@@ -55,15 +55,15 @@
 
 @media only screen and (max-width: 600px) {
     .main-container {   
-        border: 1px solid; 
+        border: 1px solid #d0e1e1;  
         height: 40px;
-        width: 100%;
+        width: 95%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-direction: row;
-        margin-left: -90%;
-        background: rgb(255, 255, 255, 0.75);
+        margin-left: -85%;
+        background: rgb(255, 255, 255);
         transition: margin-left 0.5s linear;
     }
 
@@ -74,15 +74,15 @@
 
 @media only screen and (-webkit-min-device-pixel-ratio: 3) and (max-width:1920px) {
     .main-container {   
-        border: 1px solid; 
+        border: 1px solid #d0e1e1;  
         height: 40px;
-        width: 100%;
+        width: 90%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-direction: row;
         margin-left: -90%;
-        background: rgb(255, 255, 255, 0.75);
+        background: rgb(255, 255, 255);
         transition: margin-left 0.5s linear;
     }
 
