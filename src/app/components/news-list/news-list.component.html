@@ -6,7 +6,7 @@
     <a routerLink="/add_news">Додај нову вест</a>
     <hr>
   </div>
-  <div *ngFor="let news of allNews.slice().reverse() | paginate: { id: 'pagination', itemsPerPage: 10, currentPage: pageNumber  }">
+  <div *ngFor="let news of allNews | paginate: { id: 'pagination', itemsPerPage: 10, currentPage: pageNumber  }">
     <app-news-preview [news]="news"></app-news-preview>
     <hr>
   </div>
