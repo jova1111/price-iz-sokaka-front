@@ -6,12 +6,32 @@
         float: none;
         width: 100%;
     }
-    .navbar-nav>li {
+    .navbar-nav > li {
         display: table-cell;
         float: none;
         text-align: center;
     }
 } 
+
+@media (max-width: 768px){
+    .navbar-nav {
+        width: 100%;
+
+    }
+    .navbar-nav > li {
+        text-align: center;
+    }
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    
+} 
+
+.navbar-collapse {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
 
 
 li a:hover {

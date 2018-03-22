@@ -94,4 +94,11 @@ export class RadioComponent implements OnInit {
     this.isHidden = true;
   }
 
+  private saveState() {
+    localStorage.setItem("radio_state", JSON.stringify({
+      isHidden: this.isHidden,
+      isPlaying: this.isPlaying
+    }));
+  }
+
 }
