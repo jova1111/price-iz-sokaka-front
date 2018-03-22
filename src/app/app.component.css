@@ -1,6 +1,6 @@
 .main-picture {
     width: 100%;
-    height: 400px;
+    height: auto;
 }
 
 .main-container {
@@ -14,10 +14,6 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .main-picture {
-        width: 100%;
-        height: auto;
-    }
     .router-container {
         padding: 10px;
     }
