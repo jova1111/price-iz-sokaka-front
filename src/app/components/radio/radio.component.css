@@ -12,8 +12,8 @@
     align-items: center;
     flex-direction: row;
     margin-left: -450px;
-    background: rgb(255, 255, 255, 0.75);
-    transition: margin-left 0.5s linear;
+    background: rgb(255, 255, 255);
+    transition: margin-left 0.4s linear;
 }
 
 .radio-controls {
@@ -71,3 +71,22 @@
         margin-left: 10px;
     }
 }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3) and (max-width:1920px) {
+    .main-container {   
+        border: 1px solid; 
+        height: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        margin-left: -90%;
+        background: rgb(255, 255, 255, 0.75);
+        transition: margin-left 0.5s linear;
+    }
+
+    .activated {
+        margin-left: 10px;
+    }
+ }
