@@ -1,14 +1,17 @@
 <div class="main-container" [ngClass]="{activated : !isHidden}">
-  <div class="radio-controls">
-    <span *ngIf="!isChangingStation" class="station-name">{{ currentStationName }}</span>
-    <span  *ngIf="!isChangingStation" class="glyphicon glyphicon-arrow-left" (click)="previousStation()"></span>
-    <span *ngIf="!isChangingStation" class="glyphicon glyphicon-arrow-right" (click)="nextStation()"></span>
-    <span *ngIf="!isPlaying && !isChangingStation" class="play-button glyphicon glyphicon-play" (click)="play()"></span>
-    <span *ngIf="isPlaying && !isChangingStation" class="stop-button glyphicon glyphicon-stop" (click)="pause()"></span>
-    <input *ngIf="!isChangingStation" type="range" class="range-input" [(ngModel)]="volume" min="0" max="1" step="0.01" #ref (input)="setVolume(ref.value)">
-    <img *ngIf="isChangingStation" src="/assets/images/spin_arrow.png" class="refresh-animate">
-    <span *ngIf="isChangingStation">Mењам станицу...</span>
+  <div class="radio-controls" *ngIf="!isChangingStation">
+    <span class="station-name">{{ currentStationName }}</span>
+    <span class="glyphicon glyphicon-arrow-left" (click)="previousStation()"></span>
+    <span class="glyphicon glyphicon-arrow-right" (click)="nextStation()"></span>
+    <span *ngIf="!isPlaying" class="play-button glyphicon glyphicon-play" (click)="play()"></span>
+    <span *ngIf="isPlaying" class="stop-button glyphicon glyphicon-stop" (click)="pause()"></span>
+    <input type="range" class="range-input" [(ngModel)]="volume" min="0" max="1" step="0.01" #ref (input)="setVolume(ref.value)">
   </div>
+  <div class="changing-station" *ngIf="isChangingStation">
+    <img src="/assets/images/spin_arrow.png" class="refresh-animate">
+    <span>Mењам станицу...</span>
+  </div>
+
   <span *ngIf="!isHidden" class="show-button glyphicon glyphicon glyphicon-circle-arrow-left" (click)="hide()"></span>
   <span *ngIf="isHidden" class="show-button glyphicon glyphicon glyphicon-circle-arrow-right" (click)="show()"></span>
 </div>

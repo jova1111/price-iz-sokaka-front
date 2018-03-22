@@ -29,7 +29,9 @@
 }
 
 .refresh-animate {
-    height: 30%;
+    height: 60%;
+    margin-left: 20px;
+    margin-right: 5px;
     width: auto;
     animation: spin .7s infinite linear;
     -webkit-animation: spin2 .7s infinite linear;
@@ -89,4 +91,8 @@
     .activated {
         margin-left: 10px;
     }
+ }
+
+ .changing-station {
+     height: 20px;
  }
