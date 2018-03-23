@@ -12,6 +12,18 @@
         <textarea rows="20" class="form-control" name="content" id="content" [(ngModel)]="news.content"></textarea>
     </div>
 
+    <div class="form-group">
+      <label for="image">Насловна слика:</label>
+      <image-upload 
+        id = "image"
+        (uploadFinished)="onUploadFinished($event)"
+        [max]="1"
+        [url]="'http://price-iz-sokaka.herokuapp.com/api/images/upload'"
+        buttonCaption="Изабери слике" 
+        dropBoxMessage="Превуци слике овде..." s
+        clearButtonCaption="Избриши све..."></image-upload>
+    </div>
+    
     <button *ngIf="!editMode" type="submit" class="btn btn-primary">Додај</button>
     <button *ngIf="editMode" type="submit" class="btn btn-primary">Измени</button>
   </form>

@@ -63,4 +63,10 @@ export class NewsFormComponent implements OnInit {
       }
   }
 
+  public onUploadFinished(event) {
+    let imageUrl = JSON.parse(event.serverResponse._body).url_to_image;
+    this.news.imageUrl = imageUrl;
+    console.log(JSON.parse(event.serverResponse._body).url_to_image);
+  }
+
 }

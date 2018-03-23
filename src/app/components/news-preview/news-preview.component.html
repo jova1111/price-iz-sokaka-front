@@ -1,5 +1,10 @@
 <div class="news-preview">
-  <span><a routerLink="/news/{{ news.id }}"><h3>{{ news.header }}</h3></a></span>
-  <div [innerHtml] = "news.content" class="short-description"></div>
-  <div class="date-created">Датум објаве: {{ news.dateCreated | date: 'dd.MM.yyyy. HH:mm'}}</div>
+  <span>
+    <img class="preview-image" src="{{ news.imageUrl }}">
+  </span>
+  <span>
+    <span><a routerLink="/news/{{ news.id }}"><h3>{{ news.header }}</h3></a></span>
+    <div [innerHtml] = "news.content" class="short-description"></div>
+    <div class="date-created">Датум објаве: {{ news.dateCreated | date: 'dd.MM.yyyy. HH:mm'}}</div>
+  </span>
 </div>

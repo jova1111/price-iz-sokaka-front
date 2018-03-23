@@ -78,12 +78,12 @@
     .main-container {   
         border: 1px solid #d0e1e1;  
         height: 40px;
-        width: 90%;
+        width: 95%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-direction: row;
-        margin-left: -90%;
+        margin-left: -85%;
         background: rgb(255, 255, 255);
         transition: margin-left 0.5s linear;
     }

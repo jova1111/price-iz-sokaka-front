@@ -38,6 +38,8 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { RadioComponent } from './components/radio/radio.component';
+import { UploadImageFormComponent } from './components/upload-image-form/upload-image-form.component';
+import { ImageUploadModule } from "angular2-image-upload";
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -57,6 +59,7 @@ const appRoutes: Routes = [
   { path: 'pictures', component: PicturesComponent },
   { path: 'videos', component: VideosComponent },
   { path: 'dummy', component: DummyComponent },
+  { path: 'upload_image', component: UploadImageFormComponent },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -89,7 +92,8 @@ const appRoutes: Routes = [
     PicturesComponent,
     VideosComponent,
     DummyComponent,
-    RadioComponent
+    RadioComponent,
+    UploadImageFormComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +104,8 @@ const appRoutes: Routes = [
       appRoutes
     ),
     ToastModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ImageUploadModule.forRoot()
   ],
   providers: [ AuthService, NewsService, HoroscopeService, CommentService, WeatherReportService, ContactService ],
   bootstrap: [ AppComponent ]
