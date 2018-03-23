@@ -40,6 +40,7 @@ import { DummyComponent } from './components/dummy/dummy.component';
 import { RadioComponent } from './components/radio/radio.component';
 import { UploadImageFormComponent } from './components/upload-image-form/upload-image-form.component';
 import { ImageUploadModule } from "angular2-image-upload";
+import { ShareButtonModule } from 'ngx-sharebuttons';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -105,7 +106,9 @@ const appRoutes: Routes = [
     ),
     ToastModule.forRoot(),
     BrowserAnimationsModule,
-    ImageUploadModule.forRoot()
+    ImageUploadModule.forRoot(),
+    HttpClientModule,
+    ShareButtonModule.forRoot()
   ],
   providers: [ AuthService, NewsService, HoroscopeService, CommentService, WeatherReportService, ContactService ],
   bootstrap: [ AppComponent ]

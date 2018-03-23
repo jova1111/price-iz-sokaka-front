@@ -1,10 +1,12 @@
 <div class="news-preview">
   <span>
-    <img class="preview-image" src="{{ news.imageUrl }}">
+    <a routerLink="/news/{{ news.id }}"><img class="preview-image" src="{{ news.imageUrl }}"></a>
   </span>
   <span>
     <span><a routerLink="/news/{{ news.id }}"><h3>{{ news.header }}</h3></a></span>
     <div [innerHtml] = "news.content" class="short-description"></div>
     <div class="date-created">Датум објаве: {{ news.dateCreated | date: 'dd.MM.yyyy. HH:mm'}}</div>
+    <button shareButton="facebook"><i class="fa fa-facebook"></i></button>  
   </span>
+
 </div>
