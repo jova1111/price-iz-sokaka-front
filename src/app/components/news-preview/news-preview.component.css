@@ -14,8 +14,14 @@
 }
 
 .date-created {
-    margin-top: 10px;
+    margin-right: 15px;
     color: gray;
+}
+
+.date-and-share {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
 h3 {

@@ -41,6 +41,7 @@ import { RadioComponent } from './components/radio/radio.component';
 import { UploadImageFormComponent } from './components/upload-image-form/upload-image-form.component';
 import { ImageUploadModule } from "angular2-image-upload";
 import { ShareButtonModule } from 'ngx-sharebuttons';
+import { MyShareButtonsComponent } from './components/my-share-buttons/my-share-buttons.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -94,7 +95,8 @@ const appRoutes: Routes = [
     VideosComponent,
     DummyComponent,
     RadioComponent,
-    UploadImageFormComponent
+    UploadImageFormComponent,
+    MyShareButtonsComponent
   ],
   imports: [
     BrowserModule,

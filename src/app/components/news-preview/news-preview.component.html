@@ -5,10 +5,10 @@
   <span>
     <span><a routerLink="/news/{{ news.id }}"><h3>{{ news.header }}</h3></a></span>
     <div [innerHtml] = "news.content" class="short-description"></div>
-    <div class="date-created">Датум објаве: {{ news.dateCreated | date: 'dd.MM.yyyy. HH:mm'}}</div>
-    <share-button [url]="'https://priceizsokaka.herokuapp.com/news/' + news.id" button="facebook"></share-button>
-    <share-button [url]="'https://priceizsokaka.herokuapp.com/news/' + news.id" button="twitter"></share-button>
-    <share-button [url]="'https://priceizsokaka.herokuapp.com/news/' + news.id" button="whatsapp"></share-button>
+    <div class="date-and-share">
+      <span class="date-created">Датум објаве: {{ news.dateCreated | date: 'dd.MM.yyyy. HH:mm'}}</span>
+      <app-my-share-buttons [url]="'https://priceizsokaka.herokuapp.com/news/' + news.id"></app-my-share-buttons>
+    </div>
   </span>
 
 </div>
