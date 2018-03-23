@@ -37,21 +37,68 @@ h3 {
 
 @media only screen and (max-width: 600px) {
     .preview-image {
-        width: 150px;
+        width: 120px;
         height: auto;
         margin-right: 15px;
         align-self: flex-start;
     }
 
+    .date-created {
+        margin-top: 10px;
+        color: gray;
+    }
+
     .short-description {
-        overflow: hidden;
-        width: 100%;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
+        display: none;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin-top: -2px;
+    }
+
+    .share-buttons-container {
+        margin-top: 10px;
+    }
+
+    .date-and-share {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: left;
     }
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 3) and (max-width:1920px) {
+    .preview-image {
+        width: 120px;
+        height: auto;
+        margin-right: 15px;
+        align-self: flex-start;
+    }
 
+    .date-created {
+        margin-top: 10px;
+        color: gray;
+    }
+
+    .short-description {
+        display: none;
+    }
+    
+    h3 {
+        font-size: 20px;
+        margin-top: -2px;
+    }
+
+    .share-buttons-container {
+        margin-top: 10px;
+    }
+
+    .date-and-share {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: left;
+    }
  }

@@ -4,10 +4,10 @@
   </span>
   <span>
     <span><a routerLink="/news/{{ news.id }}"><h3>{{ news.header }}</h3></a></span>
-    <div [innerHtml] = "news.content" class="short-description"></div>
+    <div *ngIf="!isSmallScreen" [innerHtml] = "news.content" class="short-description"></div>
     <div class="date-and-share">
-      <span class="date-created">Датум објаве: {{ news.dateCreated | date: 'dd.MM.yyyy. HH:mm'}}</span>
-      <app-my-share-buttons [url]="'https://priceizsokaka.herokuapp.com/news/' + news.id"></app-my-share-buttons>
+      <span class="date-created">{{ news.dateCreated | date: 'dd.MM.yyyy.'}}</span>
+      <app-my-share-buttons class="share-buttons-container" [url]="'https://priceizsokaka.herokuapp.com/news/' + news.id"></app-my-share-buttons>
     </div>
   </span>
 

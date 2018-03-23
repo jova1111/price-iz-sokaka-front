@@ -33,6 +33,7 @@ npm-debug.log
 testem.log
 /typings
 mail_api_key.txt
+slike_za_sajt
 
 # e2e
 /e2e/*.js

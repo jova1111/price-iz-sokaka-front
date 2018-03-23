@@ -11,9 +11,11 @@ export class NewsPreviewComponent implements OnInit {
   @Input()
   public news: News;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+
   }
 
 }
