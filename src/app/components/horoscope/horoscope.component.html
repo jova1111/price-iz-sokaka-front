@@ -3,12 +3,12 @@
 </div>
 
 <div *ngIf="isLoaded" class="main-container">
-  <h3>Хороскоп  <span *ngIf="horoscope.dateCreated">за {{ horoscope.dateCreated | date: 'MM. yyyy.'}}</span></h3>
-  <app-my-share-buttons [url]="'https://priceizsokaka.herokuapp.com/horoscope'"></app-my-share-buttons>
   <div *ngIf="isLogged" >
       <a routerLink="/add_horoscope">Додај нов хороскоп</a>
       <hr>
   </div>
+  <h3>Хороскоп  <span *ngIf="horoscope.dateCreated">за {{ horoscope.dateCreated | date: 'MM. yyyy.'}}</span></h3>
+  <app-my-share-buttons [url]="'https://priceizsokaka.herokuapp.com/horoscope'"></app-my-share-buttons>
   <div *ngIf="!horoscope.content">Нема активних хороскопа.</div>
   <div [innerHTML]="horoscope.content" class="content"></div>
   <div *ngIf="isLogged && horoscope.content">

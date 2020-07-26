@@ -6,7 +6,7 @@
   <h2>{{ news.header }}</h2>
   <div class="date-created">{{ news.dateCreated | date: 'dd.MM.yyyy. HH:mm'}}</div>
   <div [innerHTML]="news.content" class="content"></div>
-  <div *ngIf="isLogged">
+  <div class="action-buttons" *ngIf="isLogged">
     <hr>
     <input type="button" value="Измени" class="btn btn-primary" (click)="update()">
     <input type="button" value="Избриши" class="btn btn-danger" (click)="delete()">

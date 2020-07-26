@@ -4,6 +4,7 @@ import { NewsService } from '../../services/news.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/finally';
 import { ToastsManager } from 'ng2-toastr';
+import * as filestack from 'filestack-js';
 
 @Component({
   selector: 'app-news-form',
@@ -17,8 +18,9 @@ export class NewsFormComponent implements OnInit {
   public editMode: boolean;
   private id: number;
   public isLoaded: boolean;
+  private uploadedImageName: string;
 
-  constructor(public toastManager: ToastsManager, private newsService: NewsService, private router: Router, private route: ActivatedRoute) { 
+  constructor(public toastManager: ToastsManager, private newsService: NewsService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -63,9 +65,15 @@ export class NewsFormComponent implements OnInit {
       }
   }
 
-  public onUploadFinished(event) {
-    let imageUrl = JSON.parse(event.serverResponse._body).data.link;
-    this.news.imageUrl = imageUrl;
+  public onUploadButtonClick(event) {
+    const client = filestack.init('AKUvqfvWjQIyRw3vXkfMuz');
+    client.picker({
+      accept: 'image/*',
+      dropPane: {},
+      onFileUploadFinished: file => {
+        this.uploadedImageName = file.filename;
+        this.news.imageUrl = file.url;
+      }}).open();
   }
 
 }

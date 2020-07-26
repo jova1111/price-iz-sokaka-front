@@ -14,17 +14,10 @@
 
     <div class="form-group">
       <label for="image">Насловна слика:</label>
-      <image-upload 
-        id = "image"
-        (uploadFinished)="onUploadFinished($event)"
-        [max]="1"
-        [url]="'https://api.imgur.com/3/image'"
-        [headers]="{ Authorization: 'Client-ID c76dc3791023b1e'}"
-        buttonCaption="Изабери слике" 
-        dropBoxMessage="Превуци слике овде..." s
-        clearButtonCaption="Избриши све..."></image-upload>
+      <input type="button" value="Изабери слику" (click)="onUploadButtonClick($event)" />
+      <div>{{ uploadedImageName }}</div>
     </div>
-    
+
     <button *ngIf="!editMode" type="submit" class="btn btn-primary">Додај</button>
     <button *ngIf="editMode" type="submit" class="btn btn-primary">Измени</button>
   </form>
