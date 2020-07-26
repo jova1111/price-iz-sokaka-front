@@ -15,7 +15,7 @@ export class NewsPreviewComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.news.content = this.news.content.replace(/<\/?[^>]+(>|$)/g, "");
   }
 
 }
