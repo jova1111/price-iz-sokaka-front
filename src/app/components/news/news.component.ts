@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { DomSanitizer, SafeHtml} from '@angular/platform-browser'
 import { NewsService } from '../../services/news.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { News } from '../../model/News';
@@ -16,8 +17,10 @@ export class NewsComponent implements OnInit {
   public isLogged: boolean;
   private id: number;
   public news: News;
+  public content: SafeHtml;
 
-  constructor(private toastManager: ToastsManager, private newsService: NewsService, private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
+  constructor(private sanitizer: DomSanitizer, private toastManager: ToastsManager, private newsService: NewsService, private route: ActivatedRoute, private router: Router, private authService: AuthService) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -26,6 +29,7 @@ export class NewsComponent implements OnInit {
     this.newsService.getById(this.id)
       .then(success => {
         this.news = new News(success);
+        this.content = this.sanitizer.bypassSecurityTrustHtml(this.news.content);
         this.isLoaded = true;
       })
       .catch(error => {
