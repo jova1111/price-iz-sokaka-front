@@ -11,17 +11,15 @@ export class AuthService {
 
   public login(user: User) {
     var data = {
-      /*client_id: '2',
-      client_secret: 'dRKS8omkeSCVp4VdaCZnd2DItMHxdlur96NGOine',
-      grant_type: 'password',*/
       email: user.email,
       password: user.password
     };
-    return new Promise((resolve, reject)=> {
+
+    return new Promise((resolve, reject) => {
       this.http.post('https://price-iz-sokaka.herokuapp.com/api/authenticate', data).subscribe(
         (response: any) => {
           this.authenticate(response.token, response.expires_in);
-          resolve("Successfully logged in!");
+          resolve("Успешно улоговани!");
         },
         (error: HttpErrorResponse) => {
           reject('Нисте унели исправне податке!');
@@ -34,7 +32,7 @@ export class AuthService {
     localStorage.setItem('token', JSON.stringify(token));
   }
 
-  public isAuthenticated():boolean {
+  public isAuthenticated(): boolean {
     let tokenJson = localStorage.getItem('token');
     if (!tokenJson) {
       return false;
@@ -53,9 +51,9 @@ export class AuthService {
                                      .append('Content-Type', 'application/json');
     return this.http.post('https://price-iz-sokaka.herokuapp.com/api/user', user, { headers: headers } ).subscribe(
       (success) => {
-        console.log(success)
+        console.log(success);
       }, (error) => {
-        console.error(error)
+        console.error(error);
       }
     )
   }

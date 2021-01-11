@@ -84,13 +84,14 @@ export class RadioComponent implements OnInit {
     this.isChangingStation = true;
     this.currentStationName = this.radioStations[this.index].name;
     this.audio.src = this.radioStations[this.index].src;
-    try {
+
       this.audio.load();
-      this.audio.play();
-    } catch (error) {
-      this.currentStationName = this.radioStations[this.index].name + ' недоступан...';
-      this.isChangingStation = false;
-    }
+      this.audio.play()
+        .catch ((error) => {
+          this.currentStationName = this.radioStations[this.index].name + ' недоступан...';
+          this.isChangingStation = false;
+          console.log(error);
+        });
   }
 
   public show() {
