@@ -21,7 +21,7 @@
 .date-and-share {
     margin-top: 10px;
     display: flex;
-    align-items: center;
+    align-items: left;
 }
 
 h3 {
@@ -36,6 +36,13 @@ h3 {
 }
 
 @media only screen and (max-width: 600px) {
+    .news-preview {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 2px;
+    }
+
     .preview-image {
         width: 120px;
         height: auto;
@@ -85,7 +92,7 @@ h3 {
     .short-description {
         display: none;
     }
-    
+
     h3 {
         font-size: 20px;
         margin-top: -2px;

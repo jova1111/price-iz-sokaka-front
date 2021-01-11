@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class RadioComponent implements OnInit {
 
   public isPlaying: boolean;
-  public audio = new Audio('http://stream1.contrateam.com:8040/;*.mp3');
+  public audio = new Audio();
   public radioStations = [
     { name: 'Радио АС Шабац' , src: 'http://185.102.239.216:8000/;*.mp3' },
     { name: 'Радио Цер' , src: 'http://stream1.contrateam.com:8040/;*.mp3' },
@@ -28,7 +28,6 @@ export class RadioComponent implements OnInit {
   ngOnInit() {
     this.isHidden = false;
     this.changeStation();
-    this.audio.play();
     this.audio.volume = 0.5;
     this.volume = 0.5;
     this.initListeners();
@@ -37,16 +36,19 @@ export class RadioComponent implements OnInit {
   private initListeners() {
     this.audio.onplay = () => {
       this.isPlaying = true;
-    }
+    };
+
     this.audio.onpause = () => {
       this.isPlaying = false;
-    }
+    };
+
     this.audio.oncanplay = () => {
       this.isChangingStation = false;
-    }
+    };
+
     this.audio.onvolumechange = () => {
       this.volume = this.audio.volume;
-    }
+    };
   }
 
   public pause() {
@@ -64,7 +66,7 @@ export class RadioComponent implements OnInit {
 
   public previousStation() {
     this.index--;
-    if(this.index < 0) {
+    if (this.index < 0) {
       this.index = this.radioStations.length - 1;
     }
     this.changeStation();
@@ -72,7 +74,7 @@ export class RadioComponent implements OnInit {
 
   public nextStation() {
     this.index++;
-    if(this.index == this.radioStations.length) {
+    if (this.index === this.radioStations.length) {
       this.index = 0;
     }
     this.changeStation();
@@ -82,8 +84,13 @@ export class RadioComponent implements OnInit {
     this.isChangingStation = true;
     this.currentStationName = this.radioStations[this.index].name;
     this.audio.src = this.radioStations[this.index].src;
-    this.audio.load();
-    this.audio.play();
+    try {
+      this.audio.load();
+      this.audio.play();
+    } catch (error) {
+      this.currentStationName = this.radioStations[this.index].name + ' недоступан...';
+      this.isChangingStation = false;
+    }
   }
 
   public show() {
@@ -95,7 +102,7 @@ export class RadioComponent implements OnInit {
   }
 
   private saveState() {
-    localStorage.setItem("radio_state", JSON.stringify({
+    localStorage.setItem('radio_state', JSON.stringify({
       isHidden: this.isHidden,
       isPlaying: this.isPlaying
     }));

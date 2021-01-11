@@ -1,10 +1,10 @@
 <div class="main-container" [ngClass]="{activated : !isHidden}">
   <div class="radio-controls" *ngIf="!isChangingStation">
     <span class="station-name">{{ currentStationName }}</span>
-    <span class="glyphicon glyphicon-arrow-left" (click)="previousStation()"></span>
-    <span class="glyphicon glyphicon-arrow-right" (click)="nextStation()"></span>
-    <span *ngIf="!isPlaying" class="play-button glyphicon glyphicon-play" (click)="play()"></span>
-    <span *ngIf="isPlaying" class="stop-button glyphicon glyphicon-stop" (click)="pause()"></span>
+    <span class="fas fa-arrow-left" style="margin-right: 5px;" (click)="previousStation()"></span>
+    <span class="fas fa-arrow-right" style="margin-right: 5px;" (click)="nextStation()"></span>
+    <span *ngIf="!isPlaying" class="play-button fas fa-play" style="margin-right: 5px;" (click)="play()"></span>
+    <span *ngIf="isPlaying" class="stop-button fas fa-stop" style="margin-right: 5px;" (click)="pause()"></span>
     <input type="range" class="range-input" [(ngModel)]="volume" min="0" max="1" step="0.01" #ref (input)="setVolume(ref.value)">
   </div>
   <div class="changing-station" *ngIf="isChangingStation">
@@ -12,6 +12,6 @@
     <span>Mењам станицу...</span>
   </div>
 
-  <span *ngIf="!isHidden" class="show-button glyphicon glyphicon glyphicon-circle-arrow-left" (click)="hide()"></span>
-  <span *ngIf="isHidden" class="show-button glyphicon glyphicon glyphicon-circle-arrow-right" (click)="show()"></span>
+  <span *ngIf="!isHidden" class="show-button fas fa-chevron-circle-left" style="margin-right: 5px;" (click)="hide()"></span>
+  <span *ngIf="isHidden" class="show-button fas fa-chevron-circle-right" style="margin-right: 5px;" (click)="show()"></span>
 </div>
