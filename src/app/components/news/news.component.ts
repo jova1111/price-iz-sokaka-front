@@ -19,13 +19,18 @@ export class NewsComponent implements OnInit {
   public news: News;
   public content: SafeHtml;
 
-  constructor(private sanitizer: DomSanitizer, private toastManager: ToastsManager, private newsService: NewsService, private route: ActivatedRoute, private router: Router, private authService: AuthService) {
+  constructor(private sanitizer: DomSanitizer,
+    private toastManager: ToastsManager,
+    private newsService: NewsService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = +params['id'];
-    })
+    });
     this.newsService.getById(this.id)
       .then(success => {
         this.news = new News(success);
@@ -34,7 +39,7 @@ export class NewsComponent implements OnInit {
       })
       .catch(error => {
         console.log(error);
-      })
+      });
 
     this.isLogged = this.authService.isAuthenticated();
   }
@@ -42,12 +47,12 @@ export class NewsComponent implements OnInit {
   public delete() {
     this.newsService.delete(this.id)
       .then(success => {
-        this.toastManager.success("Успешно сте избрисали вест.");
+        this.toastManager.success('Успешно сте избрисали вест.');
         this.router.navigate(['/news']);
       })
       .catch(error => {
         this.toastManager.error(error);
-      })
+      });
   }
 
   public update() {

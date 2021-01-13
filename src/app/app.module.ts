@@ -32,16 +32,17 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { MyAutofocusDirective } from './directives/my-autofocus.directive';
-import { PicturesComponent } from './components/pictures/pictures.component';
+import { ImagesComponent } from './components/images/images.component';
 import { VideosComponent } from './components/videos/videos.component';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { RadioComponent } from './components/radio/radio.component';
-import { UploadImageFormComponent } from './components/upload-image-form/upload-image-form.component';
-import { ImageUploadModule } from "angular2-image-upload";
+import { ImageUploadModule } from 'angular2-image-upload';
 import { ShareButtonModule } from 'ngx-sharebuttons';
 import { MyShareButtonsComponent } from './components/my-share-buttons/my-share-buttons.component';
+import { ImageService } from './services/image.service';
+import { ImagesFormComponent } from './components/images-form/images-form.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -58,10 +59,10 @@ const appRoutes: Routes = [
   { path: 'add_weather_report', component:  WeatherReportFormComponent },
   { path: 'home', component: HomepageComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'pictures', component: PicturesComponent },
+  { path: 'images', component: ImagesComponent },
   { path: 'videos', component: VideosComponent },
   { path: 'dummy', component: DummyComponent },
-  { path: 'upload_image', component: UploadImageFormComponent },
+  { path: 'add_image', component: ImagesFormComponent },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -91,12 +92,12 @@ const appRoutes: Routes = [
     CommentFormComponent,
     ContactComponent,
     MyAutofocusDirective,
-    PicturesComponent,
+    ImagesComponent,
     VideosComponent,
     DummyComponent,
     RadioComponent,
-    UploadImageFormComponent,
-    MyShareButtonsComponent
+    MyShareButtonsComponent,
+    ImagesFormComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +113,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ShareButtonModule.forRoot()
   ],
-  providers: [ AuthService, NewsService, HoroscopeService, CommentService, WeatherReportService, ContactService ],
+  providers: [ AuthService, NewsService, HoroscopeService, CommentService, WeatherReportService, ContactService, ImageService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

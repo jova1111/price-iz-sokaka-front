@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { WeatherReport } from '../model/WeatherReport';
+import { requestUrl } from '../constants/constants';
 
 @Injectable()
 export class WeatherReportService {
@@ -10,7 +11,7 @@ export class WeatherReportService {
 
   public getAllWeatherReports() {
     return new Promise((resolve, reject) => {
-      this.http.get('https://price-iz-sokaka.herokuapp.com/api/weather_report').subscribe(
+      this.http.get(requestUrl() + '/weather_report').subscribe(
           (success) => {
             resolve(success);
           },
@@ -23,53 +24,52 @@ export class WeatherReportService {
 
   public getById(id) {
     return new Promise((resolve, reject) => {
-      this.http.get('https://price-iz-sokaka.herokuapp.com/api/weather_report/' + id).subscribe(
+      this.http.get(requestUrl() + '/weather_report/' + id).subscribe(
         success => {
           resolve(success);
         },
         error => {
           reject(error.message);
         }
-      )
+      );
     });
   }
 
   public getWeekly() {
     return new Promise((resolve, reject) => {
-      this.http.get('https://price-iz-sokaka.herokuapp.com/api/weather_report/weekly').subscribe(
+      this.http.get(requestUrl() + '/weather_report/weekly').subscribe(
         success => {
           resolve(success);
         },
         error => {
           reject(error.message);
         }
-      )
+      );
     });
   }
 
   public save(weatherReport: WeatherReport) {
     return new Promise((resolve, reject) => {
-      let tokenStr = localStorage.getItem("token");
-      let token = JSON.parse(tokenStr).value;
-      let headers = new HttpHeaders({"Authorization": "Bearer " + token});
-      this.http.post('https://price-iz-sokaka.herokuapp.com/api/weather_report', weatherReport, {headers: headers}).subscribe(
+      const tokenStr = localStorage.getItem('token');
+      const token = JSON.parse(tokenStr).value;
+      const headers = new HttpHeaders({'Authorization': 'Bearer ' + token });
+      this.http.post(requestUrl() + '/weather_report', weatherReport, { headers: headers }).subscribe(
         success => {
           resolve(success);
         },
         error => {
-          console.log(error);
           reject(error.message);
         }
-      )
+      );
     });
   }
 
   public delete(id) {
     return new Promise((resolve, reject) => {
-      let tokenStr = localStorage.getItem("token");
-      let token = JSON.parse(tokenStr).value;
-      let headers = new HttpHeaders({"Authorization": "Bearer " + token});
-      this.http.delete('https://price-iz-sokaka.herokuapp.com/api/weather_report/' + id, { headers: headers} ).subscribe(
+      const tokenStr = localStorage.getItem('token');
+      const token = JSON.parse(tokenStr).value;
+      const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + token});
+      this.http.delete(requestUrl() + '/weather_report/' + id, { headers: headers }).subscribe(
         success => {
           resolve('Успешно избрисано.');
         },
@@ -82,10 +82,10 @@ export class WeatherReportService {
 
   public update(id, updatedWeatherReport: WeatherReport) {
     return new Promise((resolve, reject) => {
-      let tokenStr = localStorage.getItem("token");
-      let token = JSON.parse(tokenStr).value;
-      let headers = new HttpHeaders({"Authorization": "Bearer " + token});
-      this.http.put('https://price-iz-sokaka.herokuapp.com/api/weather_report/' + id, updatedWeatherReport, { headers: headers}).subscribe(
+      const tokenStr = localStorage.getItem('token');
+      const token = JSON.parse(tokenStr).value;
+      const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + token });
+      this.http.put(requestUrl() + '/weather_report/' + id, updatedWeatherReport, { headers: headers }).subscribe(
         success => {
           resolve('Успешно измењено.');
         },

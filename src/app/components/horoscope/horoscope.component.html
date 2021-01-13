@@ -7,8 +7,8 @@
       <a routerLink="/add_horoscope">Додај нов хороскоп</a>
       <hr>
   </div>
-  <h3>Хороскоп  <span *ngIf="horoscope.dateCreated">за {{ horoscope.dateCreated | date: 'MM. yyyy.'}}</span></h3>
-  <app-my-share-buttons [url]="'https://priceizsokaka.herokuapp.com/horoscope'"></app-my-share-buttons>
+  <h3 *ngIf="horoscope.content">Хороскоп  <span *ngIf="horoscope.dateCreated">за {{ horoscope.dateCreated | date: 'MM. yyyy.'}}</span></h3>
+  <app-my-share-buttons *ngIf="horoscope.content" [url]="'https://priceizsokaka.herokuapp.com/horoscope'"></app-my-share-buttons>
   <div *ngIf="!horoscope.content">Нема активних хороскопа.</div>
   <div [innerHTML]="horoscope.content" class="content"></div>
   <div *ngIf="isLogged && horoscope.content">
@@ -16,7 +16,7 @@
     <input type="button" value="Измени" class="btn btn-primary" (click)="update()">
     <input type="button" value="Избриши" class="btn btn-danger" (click)="delete()">
   </div>
-  <app-my-share-buttons [url]="'https://priceizsokaka.herokuapp.com/horoscope'"></app-my-share-buttons>
+  <app-my-share-buttons *ngIf="horoscope.content" [url]="'https://priceizsokaka.herokuapp.com/horoscope'"></app-my-share-buttons>
   <div *ngIf="horoscope.content">
     <hr>
     <app-comment-list [commentableId]="horoscope.id" [commentType]="'horoscope'"></app-comment-list>

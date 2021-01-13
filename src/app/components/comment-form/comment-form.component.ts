@@ -16,7 +16,7 @@ export class CommentFormComponent implements OnInit {
   public content;
   @Input()
   public commentType;
-  @Output() 
+  @Output()
   onAddedComment: EventEmitter<any> = new EventEmitter();
 
   constructor(private commentService: CommentService, private commentListComponent: CommentListComponent) { }
@@ -30,7 +30,7 @@ export class CommentFormComponent implements OnInit {
         this.onAddedComment.emit();
       })
       .catch(error => {
-        console.log(error)
+        console.log(error);
       });
   }
 

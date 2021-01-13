@@ -13,20 +13,23 @@ import * as filestack from 'filestack-js';
 })
 export class NewsFormComponent implements OnInit {
 
-  public news = new News("");
+  public news = new News('');
   public error: string;
   public editMode: boolean;
   private id: number;
   public isLoaded: boolean;
   private uploadedImageName: string;
 
-  constructor(public toastManager: ToastsManager, private newsService: NewsService, private router: Router, private route: ActivatedRoute) {
+  constructor(public toastManager: ToastsManager,
+    private newsService: NewsService,
+    private router: Router,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      if(params["id"]) {
-        this.id = +params["id"];
+      if (params['id']) {
+        this.id = +params['id'];
         this.editMode = true;
         this.newsService.getById(this.id)
           .then(news => {
@@ -34,7 +37,6 @@ export class NewsFormComponent implements OnInit {
             this.isLoaded = true;
           })
           .catch(error => {
-            console.log("error");
             this.isLoaded = true;
           });
       } else {
@@ -44,24 +46,24 @@ export class NewsFormComponent implements OnInit {
   }
 
   public onSubmit() {
-      if(!this.editMode) {
+      if (!this.editMode) {
       this.newsService.save(this.news)
         .then(success => {
           this.router.navigate(['/news']);
-          this.toastManager.success("Успешно додао вест!");
+          this.toastManager.success('Успешно додао вест!');
         })
         .catch(error => {
-          this.toastManager.error("Дошло је до грешке приликом додавања.");
+          this.toastManager.error('Дошло је до грешке приликом додавања.');
         });
       } else {
         this.newsService.update(this.id, this.news)
           .then(success => {
-            this.toastManager.success("Успешно изменио вест!");
+            this.toastManager.success('Успешно изменио вест!');
             this.router.navigate(['/news']);
           })
           .catch(error => {
-            this.toastManager.error("Дошло је до грешке приликом измене.");
-          })
+            this.toastManager.error('Дошло је до грешке приликом измене.');
+          });
       }
   }
 

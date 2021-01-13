@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { News } from '../model/News';
+import { requestUrl } from '../constants/constants';
 
 @Injectable()
 export class NewsService {
@@ -9,7 +10,7 @@ export class NewsService {
 
   public getAllNews() {
     return new Promise((resolve, reject) => {
-      this.http.get('https://price-iz-sokaka.herokuapp.com/api/news').subscribe(
+      this.http.get(requestUrl() + '/news').subscribe(
           (success) => {
             resolve(success);
           },
@@ -22,40 +23,39 @@ export class NewsService {
 
   public getById(id) {
     return new Promise((resolve, reject) => {
-      this.http.get('https://price-iz-sokaka.herokuapp.com/api/news/' + id).subscribe(
+      this.http.get(requestUrl() + '/news/' + id).subscribe(
         success => {
           resolve(success);
         },
         error => {
           reject(error.message);
         }
-      )
-    })
+      );
+    });
   }
 
   public save(news: News) {
     return new Promise((resolve, reject) => {
-      let tokenStr = localStorage.getItem("token");
-      let token = JSON.parse(tokenStr).value;
-      let headers = new HttpHeaders({"Authorization": "Bearer " + token});
-      this.http.post('https://price-iz-sokaka.herokuapp.com/api/news', news, {headers: headers}).subscribe(
+      const tokenStr = localStorage.getItem('token');
+      const token = JSON.parse(tokenStr).value;
+      const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + token });
+      this.http.post(requestUrl() + '/news', news, { headers: headers }).subscribe(
         success => {
           resolve(success);
         },
         error => {
-          console.log(error);
           reject(error.message);
         }
-      )
+      );
     });
   }
 
   public delete(id) {
     return new Promise((resolve, reject) => {
-      let tokenStr = localStorage.getItem("token");
-      let token = JSON.parse(tokenStr).value;
-      let headers = new HttpHeaders({"Authorization": "Bearer " + token});
-      this.http.delete('https://price-iz-sokaka.herokuapp.com/api/news/' + id, { headers: headers} ).subscribe(
+      const tokenStr = localStorage.getItem('token');
+      const token = JSON.parse(tokenStr).value;
+      const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
+      this.http.delete(requestUrl() + '/news/' + id, { headers: headers} ).subscribe(
         success => {
           resolve('Успешно избрисано.');
         },
@@ -68,10 +68,10 @@ export class NewsService {
 
   public update(id, updatedNews: News) {
     return new Promise((resolve, reject) => {
-      let tokenStr = localStorage.getItem("token");
-      let token = JSON.parse(tokenStr).value;
-      let headers = new HttpHeaders({"Authorization": "Bearer " + token});
-      this.http.put('https://price-iz-sokaka.herokuapp.com/api/news/' + id, updatedNews, { headers: headers}).subscribe(
+      const tokenStr = localStorage.getItem('token');
+      const token = JSON.parse(tokenStr).value;
+      const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + token });
+      this.http.put(requestUrl() + '/news/' + id, updatedNews, { headers: headers}).subscribe(
         success => {
           resolve('Успешно измењено.');
         },

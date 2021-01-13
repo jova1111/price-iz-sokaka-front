@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { requestUrl } from '../constants/constants';
 
 @Injectable()
 export class ContactService {
@@ -9,16 +9,15 @@ export class ContactService {
 
   contact(content) {
     return new Promise((resolve, reject) => {
-      this.http.post('https://price-iz-sokaka.herokuapp.com/api/contact_message', { content: content }).subscribe(
+      this.http.post(requestUrl() + '/contact_message', { content: content }).subscribe(
           success => {
             resolve('Порука успешно послатa.');
           },
           error => {
-            console.log(error)
             reject('Дошло је до грешке приликом слања поруке.');
           }
       );
     });
-  } 
+  }
 
 }

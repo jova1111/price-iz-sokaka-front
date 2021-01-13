@@ -1,0 +1,17 @@
+<div *ngIf="isLoaded" class="layout">
+  <h3>Нова слика:</h3>
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="header">Опис слике:</label>
+      <input type="text" myAutofocus class="form-control" name="header" id="header" [(ngModel)]="image.description">
+    </div>
+
+    <div class="form-group">
+      <input type="button" value="Изабери слику" (click)="onUploadButtonClick($event)" />
+      <div>{{ uploadedImageName }}</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Додај</button>
+  </form>
+  <p class="error">{{ error }}</p>
+</div>

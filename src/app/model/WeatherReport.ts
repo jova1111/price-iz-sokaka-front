@@ -4,10 +4,10 @@ export class WeatherReport {
     public dateCreated;
 
     constructor(json) {
-        if(!json) {
+        if (!json) {
             this.id = -1;
-            this.content = "";
-            this.dateCreated = "";
+            this.content = '';
+            this.dateCreated = '';
         } else {
             this.id = json.id;
             this.content = json.content;

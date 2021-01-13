@@ -6,12 +6,12 @@ export class News {
     public imageUrl: string;
 
     constructor (json) {
-        if(!json) {
+        if (!json) {
             this.id = 0;
-            this.header = "";
-            this.content = "";
+            this.header = '';
+            this.content = '';
             this.dateCreated = null;
-            this.imageUrl = "";
+            this.imageUrl = '';
         } else {
             this.id = json.id;
             this.header = json.header;

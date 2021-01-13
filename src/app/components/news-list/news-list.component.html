@@ -6,6 +6,7 @@
     <a routerLink="/add_news">Додај нову вест</a>
     <hr>
   </div>
+  <span *ngIf="allNews.length === 0">Нема активних вести.</span>
   <div *ngFor="let news of allNews | paginate: { id: 'pagination', itemsPerPage: 10, currentPage: pageNumber  }">
     <app-news-preview [news]="news"></app-news-preview>
     <hr>

@@ -1,0 +1,13 @@
+<div *ngIf="!isLoaded" class="spin-container">
+  <app-spin-loader></app-spin-loader>
+</div>
+<div *ngIf="isLoaded">
+  <div *ngIf="isLogged" >
+    <a *ngIf="isLogged" routerLink="/add_image">Додај слику</a>
+    <hr>
+  </div>
+  <div *ngIf="images.length === 0">Нема додатих слика.</div>
+  <div class="image-preview-container">
+      <img class="image-preview" *ngFor="let image of images" [title]="image.description" [src]="image.url">
+  </div>
+</div>

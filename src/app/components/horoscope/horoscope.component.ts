@@ -16,7 +16,10 @@ export class HoroscopeComponent implements OnInit {
   public isLoaded: boolean;
   public isLogged: boolean;
 
-  constructor(private toastManager: ToastsManager, private horoscopeService: HoroscopeService, private authService: AuthService, private router: Router) { }
+  constructor(private toastManager: ToastsManager,
+     private horoscopeService: HoroscopeService,
+      private authService: AuthService,
+      private router: Router) { }
 
   ngOnInit() {
     this.isLogged = this.authService.isAuthenticated();
@@ -33,13 +36,13 @@ export class HoroscopeComponent implements OnInit {
   public delete() {
     this.horoscopeService.delete(this.horoscope.id)
       .then(success => {
-        this.toastManager.success("Успешно избрисан хороскоп.");
+        this.toastManager.success('Успешно избрисан хороскоп.');
         this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() =>
         this.router.navigate(['/horoscope']));
       })
       .catch(error => {
-        this.toastManager.error("Дошло је до грешке приликом брисања хороскопа.");
-      })
+        this.toastManager.error('Дошло је до грешке приликом брисања хороскопа.');
+      });
   }
 
   public update() {

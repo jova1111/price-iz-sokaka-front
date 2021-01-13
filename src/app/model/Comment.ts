@@ -4,9 +4,9 @@ export class Comment {
     public dateCreated;
 
     constructor(json) {
-        if(!json) {
+        if (!json) {
             this.id = -1;
-            this.content = "";
+            this.content = '';
             this.dateCreated = null;
         } else {
             this.id = json.id;

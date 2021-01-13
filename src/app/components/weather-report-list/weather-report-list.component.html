@@ -12,5 +12,5 @@
     <app-weather-report-preview [weatherReport]="weatherReport"></app-weather-report-preview>
     <hr>
   </div>
-  <app-my-share-buttons [url]="'https://priceizsokaka.herokuapp.com/weather_report'"></app-my-share-buttons>
+  <app-my-share-buttons *ngIf="allWeatherReports.length > 0" [url]="'https://priceizsokaka.herokuapp.com/weather_report'"></app-my-share-buttons>
 </div>

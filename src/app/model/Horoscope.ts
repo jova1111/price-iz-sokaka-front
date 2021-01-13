@@ -4,9 +4,9 @@ export class Horoscope {
     public dateCreated;
 
     constructor(json) {
-        if(!json) {
+        if (!json) {
             this.id = 0;
-            this.content = "";
+            this.content = '';
             this.dateCreated = null;
         } else {
             this.id = json.id;

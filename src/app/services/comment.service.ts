@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { requestUrl } from '../constants/constants';
 
 @Injectable()
 export class CommentService {
@@ -8,8 +9,8 @@ export class CommentService {
 
   public getComments(id, type) {
     return new Promise((resolve, reject) => {
-      if (type == "news") {
-        this.http.get('https://price-iz-sokaka.herokuapp.com/api/news/' + id + '/comments').subscribe(
+      if (type === 'news') {
+        this.http.get(requestUrl() + '/news/' + id + '/comments').subscribe(
           success => {
             resolve(success);
           },
@@ -17,8 +18,8 @@ export class CommentService {
             reject(error.message);
           }
         );
-      } else if (type == "horoscope") {
-        this.http.get('https://price-iz-sokaka.herokuapp.com/api/horoscope/' + id + '/comments').subscribe(
+      } else if (type === 'horoscope') {
+        this.http.get(requestUrl() + '/horoscope/' + id + '/comments').subscribe(
           success => {
             resolve(success);
           },
@@ -26,8 +27,8 @@ export class CommentService {
             reject(error.message);
           }
         );
-      }  else if (type == "weather_report") {
-        this.http.get('https://price-iz-sokaka.herokuapp.com/api/weather_report/' + id + '/comments').subscribe(
+      } else if (type === 'weather_report') {
+        this.http.get(requestUrl() + '/weather_report/' + id + '/comments').subscribe(
           success => {
             resolve(success);
           },
@@ -41,8 +42,8 @@ export class CommentService {
 
   public add(id, type, content) {
     return new Promise((resolve, reject) => {
-      if (type == "news") {
-          this.http.post('http://127.0.0.1:8000/api/news/' + id + '/comments', { content: content }).subscribe(
+      if (type === 'news') {
+          this.http.post(requestUrl() + '/news/' + id + '/comments', { content: content }).subscribe(
           success => {
             resolve(success);
           },
@@ -50,8 +51,8 @@ export class CommentService {
             reject(error.message);
           }
         );
-      } else if (type == "horoscope") {
-        this.http.post('http://127.0.0.1:8000/api/horoscope/' + id + '/comments', { content: content }).subscribe(
+      } else if (type === 'horoscope') {
+        this.http.post(requestUrl() + '/horoscope/' + id + '/comments', { content: content }).subscribe(
           success => {
             resolve(success);
           },
