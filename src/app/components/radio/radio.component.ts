@@ -27,7 +27,8 @@ export class RadioComponent implements OnInit {
 
   ngOnInit() {
     this.isHidden = false;
-    this.changeStation();
+    this.currentStationName = this.radioStations[this.index].name;
+    this.audio.src = this.radioStations[this.index].src;
     this.audio.volume = 0.5;
     this.volume = 0.5;
     this.initListeners();
@@ -57,7 +58,12 @@ export class RadioComponent implements OnInit {
 
   public play() {
     this.audio.load();
-    this.audio.play();
+    this.audio.play()
+      .catch ((error) => {
+        this.currentStationName = this.radioStations[this.index].name + ' недоступан...';
+        this.isChangingStation = false;
+        console.log(error);
+      });
   }
 
   public setVolume(value) {
@@ -84,14 +90,7 @@ export class RadioComponent implements OnInit {
     this.isChangingStation = true;
     this.currentStationName = this.radioStations[this.index].name;
     this.audio.src = this.radioStations[this.index].src;
-
-      this.audio.load();
-      this.audio.play()
-        .catch ((error) => {
-          this.currentStationName = this.radioStations[this.index].name + ' недоступан...';
-          this.isChangingStation = false;
-          console.log(error);
-        });
+    this.play();
   }
 
   public show() {
