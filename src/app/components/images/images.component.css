@@ -39,6 +39,11 @@
     margin-bottom: 10px;
     flex-grow: 0;
   }
+
+  .image {
+    width: 80%;
+    height: auto;
+  }
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 3) and (max-width:1920px) {
@@ -56,5 +61,10 @@
     height: 80%;
     margin-bottom: 10px;
     flex-grow: 0;
+  }
+
+  .image {
+    width: 80%;
+    height: auto;
   }
 }
