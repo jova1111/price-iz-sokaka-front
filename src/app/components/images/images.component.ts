@@ -39,14 +39,16 @@ export class ImagesComponent implements OnInit {
     if (!confirm('Да ли сте сигурни да хоћете да избришете слику?')) {
       return;
     }
-
+    this.isLoaded = false;
     this.imageService.delete(id)
       .then(success => {
         this.toastManager.success('Успешно сте избрисали слику.');
         this.images = this.images.filter(image => image.id !== id);
+        this.isLoaded = true;
       })
       .catch(error => {
         this.toastManager.error(error);
+        this.isLoaded = true;
       });
   }
 

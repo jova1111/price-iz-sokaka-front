@@ -3,7 +3,7 @@
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="header">Опис слике:</label>
-      <input type="text" myAutofocus class="form-control" name="header" id="header" [(ngModel)]="image.description">
+      <textarea myAutofocus rows="5" class="form-control" name="header" id="header" [(ngModel)]="image.description"></textarea>
     </div>
 
     <button type="submit" class="btn btn-primary">Измени</button>
