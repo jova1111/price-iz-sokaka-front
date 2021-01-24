@@ -43,6 +43,7 @@ import { ShareButtonModule } from 'ngx-sharebuttons';
 import { MyShareButtonsComponent } from './components/my-share-buttons/my-share-buttons.component';
 import { ImageService } from './services/image.service';
 import { ImagesFormComponent } from './components/images-form/images-form.component';
+import { ImagesEditFormComponent } from './components/images-edit-form/images-edit-form.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -63,6 +64,7 @@ const appRoutes: Routes = [
   { path: 'videos', component: VideosComponent },
   { path: 'dummy', component: DummyComponent },
   { path: 'add_image', component: ImagesFormComponent },
+  { path: 'edit_image/:id', component: ImagesEditFormComponent },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -97,7 +99,8 @@ const appRoutes: Routes = [
     DummyComponent,
     RadioComponent,
     MyShareButtonsComponent,
-    ImagesFormComponent
+    ImagesFormComponent,
+    ImagesEditFormComponent
   ],
   imports: [
     BrowserModule,

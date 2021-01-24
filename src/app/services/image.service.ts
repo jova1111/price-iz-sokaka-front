@@ -42,4 +42,49 @@ export class ImageService {
       );
     });
   }
+
+  public delete(id) {
+    return new Promise((resolve, reject) => {
+      const tokenStr = localStorage.getItem('token');
+      const token = JSON.parse(tokenStr).value;
+      const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
+      this.http.delete(requestUrl() + '/image/' + id, { headers: headers }).subscribe(
+        success => {
+          resolve('Успешно избрисано.');
+        },
+        error => {
+          reject('Грешка приликом брисања.');
+        }
+      );
+    });
+  }
+
+  public update(id, updatedImage: Image) {
+    return new Promise((resolve, reject) => {
+      const tokenStr = localStorage.getItem('token');
+      const token = JSON.parse(tokenStr).value;
+      const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + token });
+      this.http.put(requestUrl() + '/image/' + id, updatedImage, { headers: headers }).subscribe(
+        success => {
+          resolve('Успешно измењено.');
+        },
+        error => {
+          reject('Грешка приликом измене.');
+        }
+      );
+    });
+  }
+
+  public getById(id) {
+    return new Promise((resolve, reject) => {
+      this.http.get(requestUrl() + '/image/' + id).subscribe(
+        success => {
+          resolve(new Image(success));
+        },
+        error => {
+          reject(error.message);
+        }
+      );
+    });
+  }
 }

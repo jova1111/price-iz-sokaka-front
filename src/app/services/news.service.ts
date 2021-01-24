@@ -55,7 +55,7 @@ export class NewsService {
       const tokenStr = localStorage.getItem('token');
       const token = JSON.parse(tokenStr).value;
       const headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
-      this.http.delete(requestUrl() + '/news/' + id, { headers: headers} ).subscribe(
+      this.http.delete(requestUrl() + '/news/' + id, { headers: headers }).subscribe(
         success => {
           resolve('Успешно избрисано.');
         },
@@ -71,7 +71,7 @@ export class NewsService {
       const tokenStr = localStorage.getItem('token');
       const token = JSON.parse(tokenStr).value;
       const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + token });
-      this.http.put(requestUrl() + '/news/' + id, updatedNews, { headers: headers}).subscribe(
+      this.http.put(requestUrl() + '/news/' + id, updatedNews, { headers: headers }).subscribe(
         success => {
           resolve('Успешно измењено.');
         },

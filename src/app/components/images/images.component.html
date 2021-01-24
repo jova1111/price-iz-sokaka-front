@@ -8,6 +8,12 @@
   </div>
   <div *ngIf="images.length === 0">Нема додатих слика.</div>
   <div class="image-preview-container">
-      <img class="image-preview" *ngFor="let image of images" [title]="image.description" [src]="image.url">
+    <div class="image-preview" *ngFor="let image of images" >
+      <img class="image" [title]="image.description" [src]="image.url">
+        <span *ngIf="isLogged" class="action-buttons">
+          <button class="action-button btn btn-warning" (click)="update(image.id)"><i class="fas fa-marker"></i></button>
+          <button class="action-button btn btn-danger" (click)="delete(image.id)"><i class="fas fa-dumpster"></i></button>
+        </span>
+    </div>
   </div>
 </div>

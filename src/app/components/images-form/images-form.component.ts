@@ -32,7 +32,7 @@ export class ImagesFormComponent implements OnInit {
         this.router.navigate(['/images']);
       })
       .catch(error => {
-        this.toastManager.error('Дошло је до грешке приликом измене.');
+        this.toastManager.error('Дошло је до грешке приликом додавања.');
         this.isLoaded = true;
       });
   }

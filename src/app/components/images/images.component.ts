@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr';
 import { Image } from '../../model/Image';
 import { AuthService } from '../../services/auth.service';
@@ -17,7 +18,8 @@ export class ImagesComponent implements OnInit {
 
   constructor(private authService: AuthService,
     private imageService: ImageService,
-    public toastManager: ToastsManager) { }
+    public toastManager: ToastsManager,
+    private router: Router) { }
 
   ngOnInit() {
     this.isLogged = this.authService.isAuthenticated();
@@ -33,4 +35,22 @@ export class ImagesComponent implements OnInit {
       });
   }
 
+  public delete(id) {
+    if (!confirm('Да ли сте сигурни да хоћете да избришете слику?')) {
+      return;
+    }
+
+    this.imageService.delete(id)
+      .then(success => {
+        this.toastManager.success('Успешно сте избрисали слику.');
+        this.images = this.images.filter(image => image.id !== id);
+      })
+      .catch(error => {
+        this.toastManager.error(error);
+      });
+  }
+
+  public update(id) {
+    this.router.navigate(['/edit_image/' + id]);
+  }
 }

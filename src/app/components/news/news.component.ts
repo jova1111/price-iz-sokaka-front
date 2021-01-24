@@ -45,6 +45,10 @@ export class NewsComponent implements OnInit {
   }
 
   public delete() {
+    if (!confirm('Да ли сте сигурни да хоћете да избришете вест?')) {
+      return;
+    }
+
     this.newsService.delete(this.id)
       .then(success => {
         this.toastManager.success('Успешно сте избрисали вест.');
