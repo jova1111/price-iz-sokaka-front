@@ -40,9 +40,6 @@ export class ImagesComponent implements OnInit {
   }
 
   public delete(id) {
-    if (!confirm('Да ли сте сигурни да хоћете да избришете слику?')) {
-      return;
-    }
     this.isLoaded = false;
     this.imageService.delete(id)
       .then(success => {
