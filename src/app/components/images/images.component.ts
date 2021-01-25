@@ -32,10 +32,6 @@ export class ImagesComponent implements OnInit {
       .catch((error) => {
         this.toastManager.error(error);
         this.isLoaded = true;
-        const image = new Image('');
-        image.url = 'https://cdn.filestackcontent.com/6Z6AYx4kQOaGCrJ8Fcc4';
-        image.description = 'Jova becar.';
-        this.images.push(image);
       });
   }
 

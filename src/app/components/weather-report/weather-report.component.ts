@@ -16,12 +16,16 @@ export class WeatherReportComponent implements OnInit {
   private id: number;
   public weatherReport: WeatherReport;
 
-  constructor(private weatherReportService: WeatherReportService, private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
+  constructor(private weatherReportService: WeatherReportService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = +params['id'];
-    })
+    });
+
     this.weatherReportService.getById(this.id)
       .then(success => {
         this.weatherReport = new WeatherReport(success);
@@ -29,7 +33,7 @@ export class WeatherReportComponent implements OnInit {
       })
       .catch(error => {
         console.log(error);
-      })
+      });
 
     this.isLogged = this.authService.isAuthenticated();
   }

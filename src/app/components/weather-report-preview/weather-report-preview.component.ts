@@ -16,7 +16,10 @@ export class WeatherReportPreviewComponent implements OnInit {
   public weatherReport: WeatherReport;
   public isLogged: boolean;
 
-  constructor(private toastManager: ToastsManager, private authService: AuthService, private weatherReportService: WeatherReportService, private router: Router) { }
+  constructor(private toastManager: ToastsManager,
+    private authService: AuthService,
+    private weatherReportService: WeatherReportService,
+    private router: Router) { }
 
   ngOnInit() {
     this.isLogged = this.authService.isAuthenticated();
@@ -25,7 +28,7 @@ export class WeatherReportPreviewComponent implements OnInit {
   public delete() {
     this.weatherReportService.delete(this.weatherReport.id)
       .then(success => {
-        this.toastManager.success("Успешно избрисана временска прогноза.");
+        this.toastManager.success('Успешно избрисана временска прогноза.');
         this.router.navigateByUrl('/dummy', { skipLocationChange: true }).then(() =>
         this.router.navigate(['/weather_report']));
       })
