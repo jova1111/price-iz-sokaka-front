@@ -1,0 +1,19 @@
+<div *ngIf="!isLoaded" class="spin-container">
+  <app-spin-loader></app-spin-loader>
+</div>
+<div *ngIf="isLoaded" class="main-container">
+  <div *ngIf="isLogged" >
+    <a routerLink="/add_image">Додај слику</a>
+    <hr>
+  </div>
+  <div class="image-preview-container">
+    <div class="image-preview" *ngFor="let image of images" >
+      <img class="image" [title]="image.description" [src]="image.url">
+        <span *ngIf="isLogged" class="action-buttons">
+          <button class="action-button btn btn-warning" (click)="update(image.id)"><i class="fas fa-marker"></i></button>
+          <button class="action-button btn btn-danger" (click)="delete(image.id)"><i class="fas fa-dumpster"></i></button>
+        </span>
+    </div>
+  </div>
+</div>
+

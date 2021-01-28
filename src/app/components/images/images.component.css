@@ -1,70 +1,9 @@
-.image-preview-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.main-container {
   width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
-.image-preview {
-  width: 22%;
-  align-self: flex-start;
-  height: auto;
-  margin: 10px;
-  flex-grow: 0;
-  display: flex;
-}
-
-.image {
-  width: 90%
-}
-
-.action-button {
-  margin: 1px;
-  width: 40px;
-}
-
-@media only screen and (max-width: 600px) {
-  .image-preview-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  .image-preview {
-    width: auto;
-    align-self: center;
-    justify-content: center;
-    height: 80%;
-    margin-bottom: 10px;
-    flex-grow: 0;
-  }
-
-  .image {
-    width: 90%;
-    height: 100%;
-  }
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 3) and (max-width:1920px) {
-  .image-preview-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  .image-preview {
-    width: auto;
-    align-self: center;
-    justify-content: center;
-    height: 80%;
-    margin-bottom: 10px;
-    flex-grow: 0;
-  }
-
-  .image {
-    width: 90%;
-    height: 100%;
-  }
+ngx-gallery /deep/ .ngx-gallery-icon {
+  color: rgb(64, 152, 253);
 }

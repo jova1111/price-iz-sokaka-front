@@ -44,6 +44,9 @@ import { MyShareButtonsComponent } from './components/my-share-buttons/my-share-
 import { ImageService } from './services/image.service';
 import { ImagesFormComponent } from './components/images-form/images-form.component';
 import { ImagesEditFormComponent } from './components/images-edit-form/images-edit-form.component';
+import { NgxGalleryModule } from 'ngx-gallery';
+import { ImagesManagementComponent } from './components/images-management/images-management.component';
+
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginFormComponent },
@@ -65,6 +68,7 @@ const appRoutes: Routes = [
   { path: 'dummy', component: DummyComponent },
   { path: 'add_image', component: ImagesFormComponent },
   { path: 'edit_image/:id', component: ImagesEditFormComponent },
+  { path: 'manage_image', component: ImagesManagementComponent },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -100,7 +104,8 @@ const appRoutes: Routes = [
     RadioComponent,
     MyShareButtonsComponent,
     ImagesFormComponent,
-    ImagesEditFormComponent
+    ImagesEditFormComponent,
+    ImagesManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -114,7 +119,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ImageUploadModule.forRoot(),
     HttpClientModule,
-    ShareButtonModule.forRoot()
+    ShareButtonModule.forRoot(),
+    NgxGalleryModule
   ],
   providers: [ AuthService, NewsService, HoroscopeService, CommentService, WeatherReportService, ContactService, ImageService ],
   bootstrap: [ AppComponent ]
