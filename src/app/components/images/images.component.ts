@@ -14,7 +14,6 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, NgxGalleryImag
 export class ImagesComponent implements OnInit {
 
   public isLogged;
-  public images: Image[] = [];
   public isLoaded: boolean;
   public galleryOptions: NgxGalleryOptions[];
   public galleryImages: NgxGalleryImage[];
@@ -29,8 +28,7 @@ export class ImagesComponent implements OnInit {
 
     this.imageService.getAll()
       .then((images: Image[]) => {
-        this.images = images;
-        this.galleryImages = this.images.map(image => (
+        this.galleryImages = images.map(image => (
           { small: image.url,
             medium: image.url,
             big: image.url,
@@ -52,6 +50,9 @@ export class ImagesComponent implements OnInit {
           width: '80%',
           height: '800px',
           imageAnimation: NgxGalleryAnimation.Slide,
+          previewCloseOnEsc: true,
+          previewCloseOnClick: true,
+          previewKeyboardNavigation: true,
           imageDescription: true,
         },
         // max-width 800

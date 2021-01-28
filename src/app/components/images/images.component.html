@@ -2,6 +2,6 @@
   <app-spin-loader></app-spin-loader>
 </div>
 <div *ngIf="isLoaded" class="main-container">
-  <div *ngIf="images.length === 0">Нема додатих слика.</div>
-  <ngx-gallery *ngIf="images.length !== 0" class="gallery" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+  <div *ngIf="galleryImages.length === 0">Нема додатих слика.</div>
+  <ngx-gallery *ngIf="galleryImages.length !== 0" class="gallery" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
 </div>
