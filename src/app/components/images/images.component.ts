@@ -73,22 +73,4 @@ export class ImagesComponent implements OnInit {
     ];
 
   }
-
-  public delete(id) {
-    this.isLoaded = false;
-    this.imageService.delete(id)
-      .then(success => {
-        this.toastManager.success('Успешно сте избрисали слику.');
-        this.images = this.images.filter(image => image.id !== id);
-        this.isLoaded = true;
-      })
-      .catch(error => {
-        this.toastManager.error(error);
-        this.isLoaded = true;
-      });
-  }
-
-  public update(id) {
-    this.router.navigate(['/edit_image/' + id]);
-  }
 }
